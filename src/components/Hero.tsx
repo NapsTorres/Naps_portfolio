@@ -30,13 +30,22 @@ const Hero = () => {
             </div>
 
             <p className="text-l font-bold text-foreground/80">
-              Software Engineer | Full-Stack Developer
+              IT Specialist | Web Developer | Data Analyst 
             </p>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-3 pt-2">
-            <Button variant="outline" size="lg">
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() =>
+                window.open(
+                  "https://mail.google.com/mail/?view=cm&fs=1&to=napoleontorres5@gmail.com",
+                  "_blank"
+                )
+              }
+            >
               <Mail className="w-4 h-4" />
               Send Email
             </Button>
