@@ -9,28 +9,32 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    title: "Ayaw ko na suko na",
-    company: "Tech Company",
-    year: "2023 - Present",
-    description: "Leading development of scalable web applications"
+    title: "IT Specialist Intern",
+    company: "Regional Anti-Cybercrime Unit 5",
+    year: "Feb 2025 - June 2025",
+    description:
+      "Provided end-to-end IT support including hardware/software troubleshooting, network configuration, and system maintenance. Co-developed a secure file management system using React.js, Vite, TypeScript, Supabase, and PostgreSQL to improve digital evidence documentation efficiency."
   },
   {
-    title: "Hirap",
-    company: "Startup Inc",
-    year: "2021 - 2023",
-    description: "Built modern web apps with React and Node.js"
+    title: "Legislative Officer",
+    company: "Central Student Government – Naga College Foundation",
+    year: "2024 - 2025",
+    description:
+      "Drafted and reviewed institutional student policies, facilitated legislative sessions, and coordinated communication between departments to support student welfare initiatives."
   },
   {
-    title: "Bruh",
-    company: "Digital Agency",
-    year: "2019 - 2021",
-    description: "Created responsive and accessible user interfaces"
+    title: "Auditor",
+    company: "College of Computer Studies – Naga College Foundation",
+    year: "2022 - 2024",
+    description:
+      "Ensured financial transparency by reviewing organization funds, managing budgets, and providing recommendations for optimal financial management."
   },
   {
-    title: "Junior Developer",
-    company: "Software Solutions",
-    year: "2018 - 2019",
-    description: "Started my journey in web development"
+    title: "Team Leader",
+    company: "Regional Startup Bootcamp",
+    year: "Dec 3 - 6, 2022",
+    description:
+      "Led a team in developing a startup concept using design thinking and lean startup methodologies. Engaged in pitching, market validation, and business model development."
   },
 ];
 
