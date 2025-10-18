@@ -4,6 +4,7 @@ import Experience from "@/components/Experience";
 import TechStack from "@/components/TechStack";
 import Projects from "@/components/Projects";
 import BeyondCoding from "@/components/BeyondCoding";
+import Education from "@/components/Education"
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
           </div>
         </div>
 
+        <Education/>
         <TechStack />
         <Projects />
 
