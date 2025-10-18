@@ -9,20 +9,41 @@ interface TechCategory {
 
 const techStack: TechCategory[] = [
   {
-    category: "Frontend",
-    icon: "🎨",
-    technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vue.js"]
+    category: "Web & Software Development",
+    icon: "💻",
+    technologies: [
+      "JavaScript", "Python", "Node.js", "React.js", "TypeScript", 
+      "PHP", "C", "C++", "HTML", "CSS", "Tailwind",
+      "Laravel", "Supabase",
+      "SQL", "PostgreSQL", "MongoDB"  // ✅ As backend databases
+    ]
   },
   {
-    category: "Backend",
-    icon: "⚙️",
-    technologies: ["Node.js", "Python", "Express", "PostgreSQL", "MongoDB"]
+    category: "Data & Analytics",
+    icon: "📊",
+    technologies: [
+      "Python", "R", "Pandas", "Matplotlib", "Orange",
+      "SQL", "PostgreSQL", "MongoDB" // ✅ As analytical databases/tools
+    ]
   },
   {
-    category: "DevOps & Cloud",
-    icon: "☁️",
-    technologies: ["AWS", "Docker", "Kubernetes", "GitHub Actions", "Vercel"]
+    category: "Networking & IT Support",
+    icon: "🌐",
+    technologies: [
+      "Troubleshooting", "System Maintenance", "Hardware Support",
+      "TCP/IP", "DNS", "DHCP", "VPN", "Firewalls", 
+      "Switches", "Wireless Access Points", 
+      "Cisco Packet Tracer"
+    ]
   },
+  {
+    category: "Tools & Platforms",
+    icon: "🛠️",
+    technologies: [
+      "GitHub", "Jira", "Figma", "Microsoft Office Suite",
+      "Orange", "TeamViewer", "AnyDesk"
+    ]
+  }
 ];
 
 const TechStack = () => {
@@ -30,7 +51,7 @@ const TechStack = () => {
     <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <span>⚡</span> Tech Stack
+          <span>⚡</span> Technical Skills
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
