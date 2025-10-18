@@ -30,7 +30,7 @@ const Hero = () => {
             </div>
 
             <p className="text-l font-bold text-foreground/80">
-              IT Specialist | Web Developer | Data Analyst 
+              Data Engineer | Data Analyst | IT & Network Specialist | Web Developer
             </p>
           </div>
 
