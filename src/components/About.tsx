@@ -10,18 +10,21 @@ const About = () => {
       </CardHeader>
       <CardContent className="space-y-4 text-foreground/80">
         <p>
-          I'm a full-stack software engineer specializing in developing modern web applications 
-          with React, TypeScript, and Node.js. I focus on creating elegant solutions that solve 
-          real-world problems.
+          I am a multi-disciplinary IT professional specializing in data engineering, data analytics, and IT
+          infrastructure. I have experience working with Python (Pandas, NumPy, Matplotlib), SQL, R, and Orange to
+          process data, build insights, and support data-driven solutions.
         </p>
         <p>
-          With years of experience building scalable applications, I've helped startups and 
-          established companies bring their ideas to life. I'm passionate about clean code, 
-          user experience, and continuous learning.
+          In addition to my data expertise, I have hands-on experience in network configuration, system
+          administration, and IT support, enabling me to manage and troubleshoot real-world infrastructure
+          environments efficiently. I have also developed modern web applications using the MERN stack, allowing me
+          to build full-stack solutions that integrate both software and data capabilities.
         </p>
         <p>
-          Currently exploring the intersection of AI and web development, building intelligent 
-          applications that leverage cutting-edge technologies to deliver exceptional user experiences.
+          My primary career focus is to grow in roles such as Data Engineer, Data Scientist, and IT Specialist, while
+          continuously expanding my expertise in network engineering, cloud technologies, and system
+          administration. I am passionate about delivering secure, scalable, and innovative solutions that bridge data,
+          software, and infrastructure.
         </p>
       </CardContent>
     </Card>
