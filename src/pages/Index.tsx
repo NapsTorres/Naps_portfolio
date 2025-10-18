@@ -5,6 +5,7 @@ import TechStack from "@/components/TechStack";
 import Projects from "@/components/Projects";
 import BeyondCoding from "@/components/BeyondCoding";
 import Education from "@/components/Education"
+import Certificates from "@/components/Certificates";
 
 const Index = () => {
   return (
@@ -24,7 +25,11 @@ const Index = () => {
         </div>
 
         <Education/>
-        <TechStack />
+
+        <div className="grid gap-8 md:grid-cols-2">
+          <TechStack />
+          <Certificates/>
+        </div>
         <Projects />
 
         <footer className="text-center text-sm text-muted-foreground pt-8 pb-4">
