@@ -29,7 +29,7 @@ const education: EducationItem[] = [
   {
     level: "Elementary (1st Honorable Mention)",
     institution: "Calabanga West Central School",
-    year: "2009 - 2015",
+    year: "2008 - 2015",
     description: "Graduated with honors and early academic excellence"
   }
 ];
