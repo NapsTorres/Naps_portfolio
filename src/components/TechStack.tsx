@@ -23,7 +23,7 @@ const techStack: TechCategory[] = [
     icon: "📊",
     technologies: [
       "Python", "R", "Pandas", "Matplotlib", "Orange",
-      "SQL", "PostgreSQL", "MongoDB" // ✅ As analytical databases/tools
+      "SQL" // ✅ As analytical databases/tools
     ]
   },
   {
