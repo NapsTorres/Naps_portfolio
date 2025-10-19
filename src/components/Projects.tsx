@@ -11,27 +11,32 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with payment integration and admin dashboard",
-    link: "https://example.com",
-    github: "https://github.com"
+    title: "CRIMS - Cybercrime Records & Incident Management System",
+    description:
+      "A secure file and evidence management system for the Regional Anti-Cybercrime Unit. Features include folder categorization, access control, search functionality, and digital evidence handling. Built using React, TypeScript, Supabase, and PostgreSQL.",
+    link: "https://your-live-demo-link.com", // Replace if applicable
+    github: "https://github.com/your-username/CRIMS" // Replace with your repo link
   },
   {
-    title: "Task Management App",
-    description: "Collaborative task manager with real-time updates and team features",
-    link: "https://example.com",
-    github: "https://github.com"
+    title: "SEMS - Sport Event Management System",
+    description:
+      "Full-stack web application that automates sports tournament scheduling using single elimination, double elimination, and round-robin algorithms. Developed with React Vite, Node.js, and SQL.",
+    link: "https://your-live-demo-link.com", // optional
+    github: "https://github.com/your-username/SEMS" // optional
   },
   {
-    title: "Portfolio Generator",
-    description: "AI-powered tool to create beautiful developer portfolios in minutes",
-    link: "https://example.com",
+    title: "Clickay - E-Commerce Platform for Used Items",
+    description:
+      "MERN-based marketplace for buying and selling second-hand products. Implemented user authentication, product filtering, and responsive UI for seamless buying and selling.",
+    link: "https://your-live-demo-link.com", // optional
+    github: "https://github.com/your-username/Clickay" // optional
   },
   {
-    title: "Weather Dashboard",
-    description: "Real-time weather tracking with beautiful visualizations",
-    github: "https://github.com"
-  },
+    title: "Data Analytics Dashboard",
+    description:
+      "A data visualization and analytics project using Python, Pandas, SQL, and Matplotlib to analyze trade trends and generate actionable insights via automated dashboards.",
+    github: "https://github.com/your-username/data-analytics-dashboard" // optional
+  }
 ];
 
 const Projects = () => {
