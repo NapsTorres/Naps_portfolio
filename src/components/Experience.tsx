@@ -11,7 +11,7 @@ const experiences: ExperienceItem[] = [
   {
     title: "IT Specialist Intern",
     company: "Regional Anti-Cybercrime Unit 5",
-    year: "Feb 2025 - June 2025",
+    year: "Feb - Jun 2025",
     description:
       "Provided IT support, configured networks, and co-developed a secure file management system."
   },
@@ -45,38 +45,41 @@ const Experience = () => {
       </CardHeader>
       <CardContent>
         <div className="relative">
-          {/* Centered Timeline Line */}
-          <div className="absolute left-2 top-0 bottom-0 w-[2px] bg-muted-foreground/30 transform -translate-x-1/2" />
+          {/* Timeline Line */}
+          <div className="absolute left-2.5 top-2 bottom-0 w-[1px] bg-muted-foreground/30" />
 
           <div className="space-y-8">
             {experiences.map((exp, index) => {
               const isTopItem = index === 0;
               return (
-                <div
-                  key={index}
-                  className="relative pl-8 group cursor-pointer"
-                >
-                  {/* Centered Dot */}
+                <div key={index} className="relative pl-8 group cursor-pointer">
+                  {/* Dot */}
                   <div
-                    className={`absolute left-2 top-1 w-4 h-4 rounded-full border-2 transform -translate-x-1/2 shadow-sm transition-all duration-200
-                      ${isTopItem
-                        ? "bg-primary border-primary scale-110"
-                        : "bg-background border-muted-foreground group-hover:bg-primary group-hover:border-primary"
-                      }`}
+                    className={`absolute left-2.5 top-[0.5rem] w-3 h-3 rounded-full border-2 transform -translate-x-1/2 transition-all duration-200
+                      ${isTopItem ? "bg-black border-black scale-110" 
+                      : "bg-background border-muted-foreground group-hover:bg-black group-hover:border-white"}`}
                   />
 
-                  <div className="space-y-1">
+                  {/* Title & Date in the Same Row */}
+                  <div className="flex justify-between items-center">
                     <h3 className="font-semibold text-lg">{exp.title}</h3>
-                    <p className="text-foreground/70">{exp.company}</p>
-                    <p className="text-sm text-muted-foreground">{exp.year}</p>
-                    {exp.description && (
-                      <p className="text-sm text-foreground/60">{exp.description}</p>
-                    )}
+                    <span className="text-sm text-black-foreground bg-white px-2 py-1 rounded-full">
+                      {exp.year}
+                    </span>
                   </div>
+
+                  {/* Company */}
+                  <p className="text-foreground/70">{exp.company}</p>
+                  
+                  {/* Description */}
+                  {exp.description && (
+                    <p className="text-sm text-foreground/60">{exp.description}</p>
+                  )}
                 </div>
               );
             })}
           </div>
+
         </div>
       </CardContent>
     </Card>
