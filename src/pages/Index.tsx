@@ -16,27 +16,31 @@ const Index = () => {
 
         <div className="container max-w-5xl mx-auto px-4 mt-[1px] space-y-2">
 
-          <div className="flex flex-col md:flex-row gap-2 items-start">
-            {/* LEFT SIDE ~65% */}
+          <div className="-mt-8 md:-mt-10 relative z-[5] flex flex-col md:flex-row gap-2 items-start">
             <div className="md:w-[65%] w-full space-y-2">
               <About />
               <BeyondCoding/>
             </div>
 
-            {/* RIGHT SIDE ~35% */}
             <div className="md:w-[35%] w-full space-y-6">
               <Experience />
             </div>
           </div>
 
-          <Education/>
-          
-          <div className="grid gap-8 md:grid-cols-2">
-            <TechStack/>
-            <Certificates/>
-          </div>
-          <Projects />
 
+          <div className="-mt-8 md:-mt-10 relative z-[5]">
+            <Education />
+          </div>
+
+          
+          <div className="-mt-8 md:-mt-10 relative z-[5] grid gap-2 md:grid-cols-2">
+            <TechStack />
+            <Certificates />
+          </div>
+
+          <div className="-mt-8 md:-mt-10 relative z-[5]">
+            <Projects />
+          </div>
           <footer className="text-center text-sm text-muted-foreground pt-8 pb-4">
             <p>Built with React, TypeScript & Tailwind CSS</p>
           </footer>
