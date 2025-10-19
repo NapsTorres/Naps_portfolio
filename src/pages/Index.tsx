@@ -13,21 +13,24 @@ const Index = () => {
       <div className="container max-w-5xl mx-auto px-4 py-12 space-y-12">
         <Hero />
         
-        <div className="grid gap-8 md:grid-cols-2">
-          <div className="space-y-8">
+        <div className="flex flex-col md:flex-row gap-2 items-start">
+          {/* LEFT SIDE ~65% */}
+          <div className="md:w-[65%] w-full space-y-6">
             <About />
-            <BeyondCoding />
+            <BeyondCoding/>
           </div>
-          
-          <div className="space-y-8">
+
+          {/* RIGHT SIDE ~35% */}
+          <div className="md:w-[35%] w-full space-y-6">
             <Experience />
           </div>
         </div>
 
+
         <Education/>
 
         <div className="grid gap-8 md:grid-cols-2">
-          <TechStack />
+          <TechStack/>
           <Certificates/>
         </div>
         <Projects />
