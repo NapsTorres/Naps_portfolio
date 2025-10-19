@@ -14,7 +14,7 @@ const Index = () => {
         <Hero />
       </div>
 
-        <div className="container max-w-5xl mx-auto px-4 mt-[1px] space-y-2">
+        <div className="container max-w-5xl mx-auto px-4 mt-[40px] space-y-2">
 
           <div className="-mt-8 md:-mt-10 relative z-[5] flex flex-col md:flex-row gap-2 items-start">
             <div className="md:w-[65%] w-full space-y-2">
