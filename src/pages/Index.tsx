@@ -10,36 +10,38 @@ import Certificates from "@/components/Certificates";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="container max-w-5xl mx-auto px-4 py-12 space-y-12">
+      <div className="container max-w-5xl mx-auto px-4 py-12 space-y-4">
         <Hero />
-        
-        <div className="flex flex-col md:flex-row gap-2 items-start">
-          {/* LEFT SIDE ~65% */}
-          <div className="md:w-[65%] w-full space-y-6">
-            <About />
-            <BeyondCoding/>
-          </div>
-
-          {/* RIGHT SIDE ~35% */}
-          <div className="md:w-[35%] w-full space-y-6">
-            <Experience />
-          </div>
-        </div>
-
-
-        <Education/>
-
-        <div className="grid gap-8 md:grid-cols-2">
-          <TechStack/>
-          <Certificates/>
-        </div>
-        <Projects />
-
-        <footer className="text-center text-sm text-muted-foreground pt-8 pb-4">
-          <p>Built with React, TypeScript & Tailwind CSS</p>
-        </footer>
       </div>
-    </div>
+
+        <div className="container max-w-5xl mx-auto px-4 mt-[1px] space-y-2">
+
+          <div className="flex flex-col md:flex-row gap-2 items-start">
+            {/* LEFT SIDE ~65% */}
+            <div className="md:w-[65%] w-full space-y-2">
+              <About />
+              <BeyondCoding/>
+            </div>
+
+            {/* RIGHT SIDE ~35% */}
+            <div className="md:w-[35%] w-full space-y-6">
+              <Experience />
+            </div>
+          </div>
+
+          <Education/>
+          
+          <div className="grid gap-8 md:grid-cols-2">
+            <TechStack/>
+            <Certificates/>
+          </div>
+          <Projects />
+
+          <footer className="text-center text-sm text-muted-foreground pt-8 pb-4">
+            <p>Built with React, TypeScript & Tailwind CSS</p>
+          </footer>
+        </div>
+      </div>
   );
 };
 
