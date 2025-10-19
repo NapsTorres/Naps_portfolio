@@ -4,49 +4,37 @@ import { Badge } from "@/components/ui/badge";
 interface CertCategory {
   category: string;
   icon: string;
-  certificates: string[];
+  items: string[];
 }
 
-const certificates: CertCategory[] = [
+const certifications: CertCategory[] = [
   {
-    category: "Web & Software Development",
-    icon: "💻",
-    certificates: [
-      "JavaScript", "Python", "Node.js", "React.js", "TypeScript", 
-      "PHP", "C", "C++", "HTML", "CSS", "Tailwind",
-      "Laravel", "Supabase",
-      "SQL", "PostgreSQL", "MongoDB"  // ✅ As backend databases
+    category: "Cybersecurity",
+    icon: "🔐",
+    items: [
+      "Introduction to Cybersecurity - Cisco",
+      "DICT Cybersecurity - DICT",
+      "ICIP (Critical Infrastructure Protection) - OPSWAT"
     ]
+  },
+  {
+    category: " IT & Technical Foundation",
+    icon: "🛡️",
+    items: ["CompTIA A+ - CompTIA", "TOPCIT Level 2 - IITP"]
   },
   {
     category: "Data & Analytics",
     icon: "📊",
-    certificates: [
-      "Python", "R", "Pandas", "Matplotlib", "Orange",
-      "SQL", "PostgreSQL", "MongoDB" // ✅ As analytical databases/tools
-    ]
+    items: ["Data Analytics Essentials - Cisco"]
   },
   {
-    category: "Networking & IT Support",
-    icon: "🌐",
-    certificates: [
-      "Troubleshooting", "System Maintenance", "Hardware Support",
-      "TCP/IP", "DNS", "DHCP", "VPN", "Firewalls", 
-      "Switches", "Wireless Access Points", 
-      "Cisco Packet Tracer"
-    ]
-  },
-  {
-    category: "Tools & Platforms",
-    icon: "🛠️",
-    certificates: [
-      "GitHub", "Jira", "Figma", "Microsoft Office Suite",
-      "Orange", "TeamViewer", "AnyDesk"
-    ]
+    category: "Productivity & Professional Skills",
+    icon: "📜",
+    items: ["Microsoft PowerPoint Associate - Certiport"]
   }
 ];
 
-const Certificates = () => {
+const Certifications = () => {
   return (
     <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
@@ -55,20 +43,20 @@ const Certificates = () => {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
-        {certificates.map((category, index) => (
+        {certifications.map((category, index) => (
           <div key={index} className="space-y-3">
             <h3 className="text-sm font-semibold text-muted-foreground flex items-center gap-2">
               <span>{category.icon}</span>
               {category.category}
             </h3>
             <div className="flex flex-wrap gap-2">
-              {category.certificates.map((tech, techIndex) => (
+              {category.items.map((cert, certIndex) => (
                 <Badge
-                  key={techIndex}
+                  key={certIndex}
                   variant="secondary"
                   className="hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
                 >
-                  {tech}
+                  {cert}
                 </Badge>
               ))}
             </div>
@@ -79,4 +67,4 @@ const Certificates = () => {
   );
 };
 
-export default Certificates;
+export default Certifications;
