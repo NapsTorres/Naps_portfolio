@@ -1,69 +1,122 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
-interface CertCategory {
-  category: string;
-  icon: string;
-  items: string[];
+interface Certification {
+  title: string;
+  organization: string;
 }
 
-const certifications: CertCategory[] = [
+const recentCertifications: Certification[] = [
   {
-    category: "Cybersecurity",
-    icon: "🔐",
-    items: [
-      "Introduction to Cybersecurity - Cisco",
-      "DICT Cybersecurity - DICT",
-      "ICIP (Critical Infrastructure Protection) - OPSWAT"
-    ]
+    title: "Introduction to Cybersecurity",
+    organization: "Cisco"
   },
   {
-    category: " IT & Technical Foundation",
-    icon: "🛡️",
-    items: ["CompTIA A+ - CompTIA", "TOPCIT Level 2 - IITP"]
+    title: "CompTIA A+",
+    organization: "CompTIA"
   },
   {
-    category: "Data & Analytics",
-    icon: "📊",
-    items: ["Data Analytics Essentials - Cisco"]
+    title: "Data Analytics Essentials",
+    organization: "Cisco"
   },
   {
-    category: "Productivity & Professional Skills",
-    icon: "📜",
-    items: ["Microsoft PowerPoint Associate - Certiport"]
+    title: "Microsoft PowerPoint Associate",
+    organization: "Certiport"
   }
 ];
 
 const Certifications = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
+  // All certifications for the modal
+  const allCertifications: Certification[] = [
+    {
+      title: "Introduction to Cybersecurity",
+      organization: "Cisco"
+    },
+    {
+      title: "DICT Cybersecurity",
+      organization: "DICT"
+    },
+    {
+      title: "ICIP (Critical Infrastructure Protection)",
+      organization: "OPSWAT"
+    },
+    {
+      title: "CompTIA A+",
+      organization: "CompTIA"
+    },
+    {
+      title: "TOPCIT Level 2",
+      organization: "IITP"
+    },
+    {
+      title: "Data Analytics Essentials",
+      organization: "Cisco"
+    },
+    {
+      title: "Microsoft PowerPoint Associate",
+      organization: "Certiport"
+    }
+  ];
+
   return (
-    <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <span>📜</span> Certifications
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {certifications.map((category, index) => (
-          <div key={index} className="space-y-3">
-            <h3 className="text-sm font-semibold text-muted-foreground flex items-center gap-2">
-              <span>{category.icon}</span>
-              {category.category}
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {category.items.map((cert, certIndex) => (
-                <Badge
-                  key={certIndex}
-                  variant="secondary"
-                  className="hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
-                >
-                  {cert}
-                </Badge>
-              ))}
+    <>
+      <Card className="border border-gray">
+        <CardHeader>
+          <CardTitle className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span>🕐</span> Recent Certifications
             </div>
-          </div>
-        ))}
-      </CardContent>
-    </Card>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <span className="text-sm text-black cursor-pointer hover:underline">
+                  View All &gt;
+                </span>
+              </DialogTrigger>
+              <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle className="flex items-center gap-2">
+                    <span>📜</span> All Certifications
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="grid grid-cols-2 gap-4 mt-4">
+                  {allCertifications.map((cert, index) => (
+                    <div
+                      key={index}
+                      className="p-3 bg-gray-50 rounded-lg border border-gray-200"
+                    >
+                      <div className="font-semibold text-black">{cert.title}</div>
+                      <div className="text-sm text-gray-600">{cert.organization}</div>
+                    </div>
+                  ))}
+                </div>
+              </DialogContent>
+            </Dialog>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          {recentCertifications.map((cert, index) => (
+            <div
+              key={index}
+              className="p-3 bg-gray-50 rounded-lg border border-gray-200"
+            >
+              <div className="font-semibold text-black">{cert.title}</div>
+              <div className="text-sm text-gray-600">{cert.organization}</div>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+    </>
   );
 };
 
