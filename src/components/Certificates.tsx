@@ -75,7 +75,7 @@ const Certifications = () => {
       <Card className="border border-gray">
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 font-bold">
               <Clock className="w-5 h-5" /> Recent Certifications
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -86,8 +86,8 @@ const Certifications = () => {
               </DialogTrigger>
               <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
-                  <DialogTitle className="flex items-center gap-2">
-                    <Award className="w-5 h-5" />Certifications
+                  <DialogTitle className="flex items-center gap-2 font-bold">
+                    <Award className="w-5 h-5" /> All Certifications
                   </DialogTitle>
                 </DialogHeader>
                 <div className="grid grid-cols-2 gap-4 mt-4">

@@ -24,7 +24,7 @@ const Hero = () => {
               <BadgeCheck className="w-5 h-5 text-white fill-blue-500 stroke-white" />
             </h1>
 
-            <div className="flex items-center gap-2 text-muted-foreground mb-3">
+            <div className="flex items-center gap-2 text-black-foreground mb-3">
               <MapPin className="w-4 h-4" />
               <span>Calabanga, Camarines Sur, Philippines</span>
             </div>
