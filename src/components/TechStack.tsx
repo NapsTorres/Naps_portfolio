@@ -9,17 +9,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Wrench, BarChart3, Globe, Settings } from "lucide-react";
 
 interface TechCategory {
   category: string;
-  icon: string;
+  icon: React.ReactNode;
   technologies: string[];
 }
 
 const techStack: TechCategory[] = [
   {
     category: "Web & Software Development",
-    icon: "💻",
+    icon: <Wrench className="w-4 h-4" />,
     technologies: [
       "JavaScript", "Python", "Node.js", "React.js", "TypeScript", 
       "PHP", "C", "C++", "HTML", "CSS", "Tailwind",
@@ -29,7 +30,7 @@ const techStack: TechCategory[] = [
   },
   {
     category: "Data & Analytics",
-    icon: "📊",
+    icon: <BarChart3 className="w-4 h-4" />,
     technologies: [
       "Python", "R", "Pandas", "Matplotlib", "Orange",
       "SQL" // ✅ As analytical databases/tools
@@ -37,7 +38,7 @@ const techStack: TechCategory[] = [
   },
   {
     category: "Networking & IT Support",
-    icon: "🌐",
+    icon: <Globe className="w-4 h-4" />,
     technologies: [
       "Troubleshooting", "System Maintenance", "Hardware Support",
       "TCP/IP", "DNS", "DHCP", "VPN", "Firewalls", 
@@ -47,7 +48,7 @@ const techStack: TechCategory[] = [
   },
   {
     category: "Tools & Platforms",
-    icon: "🛠️",
+    icon: <Settings className="w-4 h-4" />,
     technologies: [
       "GitHub", "Jira", "Figma", "Microsoft Office Suite",
       "Orange", "TeamViewer", "AnyDesk"
@@ -73,7 +74,7 @@ const TechStack = () => {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span>⚡</span> Technical Skills
+            <Wrench className="w-5 h-5" /> Technical Skills
           </div>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
@@ -84,7 +85,7 @@ const TechStack = () => {
             <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2">
-                  <span>⚡</span> Complete Technical Skills
+                  <Wrench className="w-5 h-5" />Technical Skills
                 </DialogTitle>
               </DialogHeader>
               <div className="space-y-6 mt-4">

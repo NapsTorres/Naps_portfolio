@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { GraduationCap } from "lucide-react";
 
 import ncfLogo from "@/assets/ncf.jpg";
 import dominicanLogo from "@/assets/dsc.jpg";
@@ -52,7 +53,7 @@ const Education = () => {
     <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <span>🎓</span> Education
+          <GraduationCap className="w-5 h-5" /> Education
         </CardTitle>
       </CardHeader>
       <CardContent>

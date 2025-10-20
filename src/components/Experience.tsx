@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Briefcase } from "lucide-react";
 
 interface ExperienceItem {
   title: string;
@@ -40,7 +41,7 @@ const Experience = () => {
     <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <span>💼</span> Experience
+          <Briefcase className="w-5 h-5" /> Experience
         </CardTitle>
       </CardHeader>
       <CardContent>
