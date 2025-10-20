@@ -32,8 +32,8 @@ const techStack: TechCategory[] = [
     category: "Data & Analytics",
     icon: <BarChart3 className="w-4 h-4" />,
     technologies: [
-      "Python", "R", "Pandas", "Matplotlib", "Orange",
-      "SQL" // ✅ As analytical databases/tools
+      "Python", "SQL", "R", "Orange", "Pandas", "Matplotlib", "NumPy",
+      "Excel", "Seaborn"// ✅ As analytical databases/tools
     ]
   },
   {
