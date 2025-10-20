@@ -33,9 +33,13 @@ const Index = () => {
           </div>
 
           
-          <div className="-mt-8 md:-mt-10 relative z-[5] grid gap-2 md:grid-cols-2">
-            <TechStack />
-            <Certificates />
+          <div className="-mt-8 md:-mt-10 relative z-[5] flex flex-col md:flex-row gap-2 items-start">
+            <div className="md:w-[58%] w-full space-y-2">
+              <TechStack />
+            </div>
+            <div className="md:w-[42%] w-full space-y-6">
+              <Certificates />
+            </div>
           </div>
 
           <div className="-mt-8 md:-mt-10 relative z-[5]">
