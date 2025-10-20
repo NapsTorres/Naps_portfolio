@@ -91,7 +91,7 @@ const TechStack = () => {
               <div className="space-y-6 mt-4">
                 {techStack.map((category, index) => (
                   <div key={index} className="space-y-3">
-                    <h3 className="text-lg font-semibold text-muted-foreground flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-black-foreground flex items-center gap-2">
                       <span>{category.icon}</span>
                       {category.category}
                     </h3>
@@ -115,7 +115,7 @@ const TechStack = () => {
         <CardContent className="space-y-6">
           {techStack.map((category, index) => (
             <div key={index} className="space-y-3">
-              <h3 className="text-sm font-semibold text-muted-foreground flex items-center gap-2">
+              <h3 className="text-sm font-semibold text-black-foreground flex items-center gap-2">
                 <span>{category.icon}</span>
                 {category.category}
               </h3>
