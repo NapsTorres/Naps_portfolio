@@ -94,7 +94,7 @@ const Certifications = () => {
                   {allCertifications.map((cert, index) => (
                     <div
                       key={index}
-                      className="p-3 bg-gray-50 rounded-lg border border-gray-200"
+                      className="p-3 bg-gray-100 rounded-lg border border-gray-200"
                     >
                       <div className="font-semibold text-black">{cert.title}</div>
                       <div className="text-sm text-gray-600">{cert.organization}</div>
@@ -109,7 +109,7 @@ const Certifications = () => {
           {recentCertifications.map((cert, index) => (
             <div
               key={index}
-              className="p-3 bg-gray-50 rounded-lg border border-gray-200"
+              className="p-2.5 bg-gray-50 rounded-lg border border-gray-200"
             >
               <div className="font-semibold text-black">{cert.title}</div>
               <div className="text-sm text-gray-600">{cert.organization}</div>
