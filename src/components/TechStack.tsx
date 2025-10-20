@@ -73,7 +73,7 @@ const TechStack = () => {
       <Card className="border border-gray">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 font-bold">
             <Wrench className="w-5 h-5" /> Technical Skills
           </div>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
