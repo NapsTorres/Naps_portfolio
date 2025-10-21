@@ -32,9 +32,9 @@ const socialPlatforms: SocialPlatform[] = [
 
 const SocialMedia = () => {
   return (
-    <Card className="border border-gray">
+    <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 font-bold text-[20px]">
+        <CardTitle className="flex items-center gap-2 font-bold text-[20px] dark:text-white">
           <Link className="w-4 h-4" /> Social Links
         </CardTitle>
       </CardHeader>
@@ -45,10 +45,11 @@ const SocialMedia = () => {
             href={platform.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 p-3.5 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+            className="flex items-center gap-4 p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:-translate-y-1 transition-all duration-200"
+            title={`Visit ${platform.name}`}
           >
             {platform.icon}
-            <span className="font-semibold text-black">{platform.name}</span>
+            <span className="font-semibold text-black dark:text-white hover:underline">{platform.name}</span>
           </a>
         ))}
       </CardContent>
