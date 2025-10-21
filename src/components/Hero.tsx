@@ -1,6 +1,7 @@
 import { MapPin, Mail, BadgeCheck, Coffee, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profileImage from "@/assets/Naps.jpg";
+import profileImageDark from "@/assets/Naps-dark.jpg";
+import profileImageLight from "@/assets/Naps-white.jpg";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
@@ -36,7 +37,7 @@ const Hero = () => {
         {/* Profile Image */}
         <div className="shrink-0">
           <img
-            src={profileImage}
+            src={isDarkMode ? profileImageDark : profileImageLight}
             alt="Profile"
             className="w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover shadow-lg ring-2 ring-primary/10"
           />
