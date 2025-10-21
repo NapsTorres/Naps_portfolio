@@ -11,22 +11,22 @@ const socialPlatforms: SocialPlatform[] = [
   {
     name: "LinkedIn",
     icon: <Link className="w-5 h-5" />,
-    url: ""
+    url: "https://www.linkedin.com/in/napoleon-torres-1940b518a"
   },
   {
     name: "GitHub",
     icon: <Github className="w-5 h-5" />,
-    url: ""
+    url: "https://github.com/NapsTorres"
   },
   {
     name: "Instagram",
     icon: <Instagram className="w-5 h-5" />,
-    url: ""
+    url: "https://www.instagram.com/misterlittle.n"
   },
   {
     name: "Facebook",
     icon: <Facebook className="w-5 h-5" />,
-    url: ""
+    url: "https://www.facebook.com/misterlittle.n"
   }
 ];
 
