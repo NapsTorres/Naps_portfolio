@@ -69,7 +69,7 @@ const Education = () => {
           {education.map((edu, index) => (
             <div
               key={index}
-              className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted/30 transition-colors border border-border shadow-sm"
+              className="flex items-center gap-4 p-4 rounded-lg hover:-translate-y-1 transition-all duration-200 border border-border shadow-sm"
             >
               <img
                 src={edu.image}
@@ -79,19 +79,19 @@ const Education = () => {
               <div className="flex-1 space-y-1">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1">
-                    <h3 className="font-semibold text-lg">{edu.level}</h3>
-                    <p className="text-foreground/70">{edu.institution}</p>
-                    <p className="text-sm text-muted-foreground">{edu.year}</p>
+                    <h3 className="font-semibold text-lg dark:text-white">{edu.level}</h3>
+                    <p className="text-foreground/70 dark:text-gray-300">{edu.institution}</p>
+                    <p className="text-sm text-muted-foreground dark:text-gray-400">{edu.year}</p>
                   </div>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <button className="text-xs text-black hover:underline transition-all duration-200">
+                      <button className="text-xs text-black dark:text-white hover:underline transition-all duration-200">
                         Details
                       </button>
                     </DialogTrigger>
                     <DialogContent className="max-w-2xl">
                       <DialogHeader>
-                        <DialogTitle className="font-bold flex items-center gap-2">
+                        <DialogTitle className="font-bold flex items-center gap-2 dark:text-white">
                           <GraduationCap className="w-5 h-5" /> {edu.level}
                         </DialogTitle>
                       </DialogHeader>
@@ -102,14 +102,14 @@ const Education = () => {
                           className="w-20 h-20 rounded-full object-cover ring-2 ring-primary/20 shadow-sm"
                         />
                         <div>
-                          <p className="text-lg font-semibold text-foreground/70">{edu.institution}</p>
-                          <p className="text-sm text-muted-foreground">{edu.year}</p>
+                          <p className="text-lg font-semibold text-foreground/70 dark:text-gray-300">{edu.institution}</p>
+                          <p className="text-sm text-muted-foreground dark:text-gray-400">{edu.year}</p>
                         </div>
                       </div>
                       {edu.description && (
-                        <div className="bg-muted/30 p-4 rounded-lg">
-                          <h4 className="font-semibold mb-2">Achievements & Details:</h4>
-                          <p className="text-sm text-foreground/80 whitespace-pre-line">
+                        <div className="p-4 rounded-lg">
+                          <h4 className="font-semibold mb-2 dark:text-white">Achievements & Details:</h4>
+                          <p className="text-sm text-foreground/80 dark:text-gray-300 whitespace-pre-line">
                             {edu.description}
                           </p>
                         </div>
