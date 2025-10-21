@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, FolderOpen } from "lucide-react";
+import { ExternalLink, FolderOpen } from "lucide-react";
 import { useState } from "react";
 import {
   Dialog,
@@ -14,7 +14,11 @@ interface Project {
   title: string;
   description: string;
   link?: string;
-  github?: string;
+  // Add new link types here
+  documentation?: string;
+  video?: string;
+  figma?: string;
+  behance?: string;
 }
 
 const projects: Project[] = [
@@ -22,28 +26,28 @@ const projects: Project[] = [
     title: "CRIMS - Cybercrime Records & Incident Management System",
     description:
       "Secure file and evidence management system for Regional Anti-Cybercrime Unit with access control and digital evidence handling.",
-    link: "https://your-live-demo-link.com", // Replace if applicable
-    github: "https://github.com/your-username/CRIMS" // Replace with your repo link
+    link: "crims-alpha.vercel.app", // Replace if applicable
+    // Example of new link types:
+    // documentation: "https://docs.example.com",
+    // video: "https://youtube.com/watch?v=example",
+    // figma: "https://figma.com/design/example"
   },
   {
     title: "SEMS - Sport Event Management System",
     description:
       "Full-stack web app that automates sports tournament scheduling using elimination and round-robin algorithms.",
     link: "https://your-live-demo-link.com", // optional
-    github: "https://github.com/your-username/SEMS" // optional
   },
   {
     title: "Clickay - E-Commerce Platform for Used Items",
     description:
       "MERN-based marketplace for buying and selling second-hand products with user authentication and filtering.",
     link: "https://your-live-demo-link.com", // optional
-    github: "https://github.com/your-username/Clickay" // optional
   },
   {
     title: "Data Analytics Dashboard",
     description:
       "Data visualization project using Python, Pandas, and Matplotlib to analyze trade trends and generate insights.",
-    github: "https://github.com/your-username/data-analytics-dashboard" // optional
   }
 ];
 
@@ -89,13 +93,19 @@ const Projects = () => {
                       </p>
                       <div className="flex gap-2">
                         {project.link && (
-                          <Button variant="ghost" size="sm" className="h-8 px-2">
-                            <ExternalLink className="w-4 h-4" />
-                          </Button>
-                        )}
-                        {project.github && (
-                          <Button variant="ghost" size="sm" className="h-8 px-2">
-                            <Github className="w-4 h-4" />
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="h-8 px-2"
+                            asChild
+                          >
+                            <a 
+                              href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                            </a>
                           </Button>
                         )}
                       </div>
@@ -130,15 +140,90 @@ const Projects = () => {
                       <p className="text-sm text-muted-foreground">
                         {project.description}
                       </p>
-                      <div className="mt-4 flex gap-2">
+                      <div className="mt-4 flex gap-2 flex-wrap">
                         {project.link && (
-                          <Button variant="ghost" size="sm" className="h-8 px-2">
-                            <ExternalLink className="w-4 h-4" />
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="h-8 px-2"
+                            asChild
+                          >
+                            <a 
+                              href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Live Demo"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                            </a>
                           </Button>
                         )}
-                        {project.github && (
-                          <Button variant="ghost" size="sm" className="h-8 px-2">
-                            <Github className="w-4 h-4" />
+                        {project.documentation && (
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="h-8 px-2"
+                            asChild
+                          >
+                            <a 
+                              href={project.documentation}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Documentation"
+                            >
+                              📚
+                            </a>
+                          </Button>
+                        )}
+                        {project.video && (
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="h-8 px-2"
+                            asChild
+                          >
+                            <a 
+                              href={project.video}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Video Demo"
+                            >
+                              🎥
+                            </a>
+                          </Button>
+                        )}
+                        {project.figma && (
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="h-8 px-2"
+                            asChild
+                          >
+                            <a 
+                              href={project.figma}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Figma Design"
+                            >
+                              🎨
+                            </a>
+                          </Button>
+                        )}
+                        {project.behance && (
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="h-8 px-2"
+                            asChild
+                          >
+                            <a 
+                              href={project.behance}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Behance Portfolio"
+                            >
+                              💼
+                            </a>
                           </Button>
                         )}
                       </div>
@@ -146,9 +231,14 @@ const Projects = () => {
                   </Dialog>
                 </div>
                 {project.link && (
-                  <div className="inline-block mt-2 px-2 py-1 bg-gray-100 rounded text-xs text-black">
+                  <a 
+                    href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-2 px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
+                  >
                     {project.link.replace('https://', '').replace('http://', '')}
-                  </div>
+                  </a>
                 )}
               </div>
             ))}
