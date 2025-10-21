@@ -52,10 +52,10 @@ const Experience = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="h-[535px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+        <div className="h-[535px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800">
           <div className="relative">
             {/* Simple timeline line */}
-            <div className="absolute left-4 top-2 bottom-0 w-0.5 bg-gray-300" />
+            <div className="absolute left-4 top-2 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600" />
             
             <div className="space-y-6">
               {experiences.map((exp, index) => {
@@ -65,25 +65,25 @@ const Experience = () => {
                     {/* Dot */}
                     <div className="relative z-10 flex-shrink-0 w-8 h-8 flex items-start justify-center pt-2">
                       <div
-                        className={`w-3 h-3 rounded-full border-2 transition-all duration-200
-                          ${isTopItem ? "bg-black border-black" 
-                          : "bg-white border-gray-400"}`}
+                        className={`w-3 h-3 rounded-full border-2 transition-all duration-200 hover:scale-125 hover:shadow-lg hover:bg-black hover:border-black dark:hover:bg-white dark:hover:border-white
+                          ${isTopItem ? "bg-black border-black dark:bg-white dark:border-white" 
+                          : "bg-white border-gray-400 dark:bg-gray-800 dark:border-gray-600"}`}
                       />
                     </div>
                     
                     {/* Content */}
                     <div className="ml-4 flex-1 -pt-4">
                       <div className="flex justify-between items-baseline mb-1">
-                        <h3 className="font-bold text-md">{exp.title}</h3>
-                        <span className="text-[12px] text-gray-600">
+                        <h3 className="font-bold text-md dark:text-white">{exp.title}</h3>
+                        <span className="text-[12px] text-gray-600 dark:text-gray-300">
                           {exp.year}
                         </span>
                       </div>
                       
-                      <p className="font-semibold text-gray-700 text-sm mb-1">{exp.company}</p>
+                      <p className="font-semibold text-gray-700 text-sm mb-1 dark:text-gray-300">{exp.company}</p>
                       
                       {exp.description && (
-                        <p className="text-sm text-gray-600">{exp.description}</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">{exp.description}</p>
                       )}
                     </div>
                   </div>
