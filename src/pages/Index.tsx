@@ -35,20 +35,20 @@ const Index = () => {
 
           
           <div className="-mt-8 md:-mt-10 relative z-[5] flex flex-col md:flex-row gap-2 items-start">
-            <div className="md:w-[58%] w-full space-y-2">
-              <TechStack />
-            </div>
-            <div className="md:w-[42%] w-full space-y-6">
+            <div className="md:w-[42%] w-full space-y-2">
               <Certificates />
+            </div>
+            <div className="md:w-[58%] w-full space-y-6">
+              <TechStack />
             </div>
           </div>
 
           <div className="-mt-8 md:-mt-10 relative z-[5] flex flex-col md:flex-row gap-2 items-start">
-            <div className="md:w-[20%] w-full space-y-6">
-              <SocialMedia />
-            </div>
-            <div className="md:w-[80%] w-full space-y-2">
+            <div className="md:w-[80%] w-full space-y-6">
               <Projects />
+            </div>
+            <div className="md:w-[20%] w-full space-y-2">
+              <SocialMedia />
             </div>
           </div>
 
