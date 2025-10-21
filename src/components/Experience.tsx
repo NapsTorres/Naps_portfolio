@@ -17,6 +17,13 @@ const experiences: ExperienceItem[] = [
       "Provided IT support, configured networks, and co-developed a secure file management system."
   },
   {
+    title: "IT Specialist Intern",
+    company: "Regional Anti-Cybercrime Unit 5",
+    year: "Feb - Jun 2025",
+    description:
+      "Provided IT support, configured networks, and co-developed a secure file management system."
+  },
+  {
     title: "Legislative Officer",
     company: "Central Student Government – Naga College Foundation",
     year: "2024 - 2025",
@@ -34,6 +41,19 @@ const experiences: ExperienceItem[] = [
     year: "Dec 3 - 6, 2022",
     description: "Led startup ideation and pitching using lean methodologies."
   },
+  {
+    title: "Team Leader",
+    company: "Regional Startup Bootcamp",
+    year: "Dec 3 - 6, 2022",
+    description: "Led startup ideation and pitching using lean methodologies."
+  },
+  {
+    title: "Team Leader",
+    company: "Regional Startup Bootcamp",
+    year: "Dec 3 - 6, 2022",
+    description: "Led startup ideation and pitching using lean methodologies."
+  },
+
 ];
 
 const Experience = () => {
@@ -45,40 +65,44 @@ const Experience = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-2.5 top-2 bottom-0 w-[1px] bg-muted-foreground/30" />
-
-          <div className="space-y-8">
-            {experiences.map((exp, index) => {
-              const isTopItem = index === 0;
-              return (
-                <div key={index} className="relative pl-8 group cursor-pointer">
-                  {/* Dot */}
-                  <div
-                    className={`absolute left-2.5 top-[0.5rem] w-3 h-3 rounded-full border-2 transform -translate-x-1/2 transition-all duration-200
-                      ${isTopItem ? "bg-black border-black scale-110" 
-                      : "bg-background border-muted-foreground group-hover:bg-black group-hover:border-white"}`}
-                  />
-
-                  {/* Title & Date in the Same Row */}
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-lg">{exp.title}</h3>
-                    <span className="text-sm text-black-foreground bg-white px-2 py-1 rounded-full">
-                      {exp.year}
-                    </span>
+        <div className="h-[535px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+          <div className="relative">
+            {/* Simple timeline line */}
+            <div className="absolute left-4 top-2 bottom-0 w-0.5 bg-gray-300" />
+            
+            <div className="space-y-6">
+              {experiences.map((exp, index) => {
+                const isTopItem = index === 0;
+                return (
+                  <div key={index} className="relative flex items-start">
+                    {/* Dot */}
+                    <div className="relative z-10 flex-shrink-0 w-8 h-8 flex items-start justify-center pt-2">
+                      <div
+                        className={`w-3 h-3 rounded-full border-2 transition-all duration-200
+                          ${isTopItem ? "bg-black border-black" 
+                          : "bg-white border-gray-400"}`}
+                      />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="ml-4 flex-1 -pt-4">
+                      <div className="flex justify-between items-start mb-1">
+                        <h3 className="font-semibold text-lg">{exp.title}</h3>
+                        <span className="text-sm text-gray-600">
+                          {exp.year}
+                        </span>
+                      </div>
+                      
+                      <p className="text-gray-700 font-medium mb-1">{exp.company}</p>
+                      
+                      {exp.description && (
+                        <p className="text-sm text-gray-600">{exp.description}</p>
+                      )}
+                    </div>
                   </div>
-
-                  {/* Company */}
-                  <p className="text-foreground/70">{exp.company}</p>
-                  
-                  {/* Description */}
-                  {exp.description && (
-                    <p className="text-sm text-foreground/60">{exp.description}</p>
-                  )}
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
         </div>
