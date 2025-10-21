@@ -1,4 +1,4 @@
-import { MapPin, Mail, BadgeCheck } from "lucide-react";
+import { MapPin, Mail, BadgeCheck, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/Naps.jpg";
 
@@ -35,20 +35,25 @@ const Hero = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() =>
-                window.open(
-                  "https://mail.google.com/mail/?view=cm&fs=1&to=napoleontorres5@gmail.com",
-                  "_blank"
-                )
-              }
+          <div className="flex flex-wrap gap-2 pt-2">
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=napoleontorres5@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:bg-gray-200 transition-colors"
             >
               <Mail className="w-4 h-4" />
-              Send Email
-            </Button>
+              <span className="font-semibold text-black text-sm">Send Email</span>
+            </a>
+            <a
+              href="https://buymeacoffee.com/napoleontorres"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:bg-gray-200 transition-colors"
+            >
+              <Coffee className="w-4 h-4" />
+              <span className="font-semibold text-black text-sm">Buy me a coffee</span>
+            </a>
           </div>
         </div>
       </div>
