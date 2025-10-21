@@ -70,28 +70,28 @@ const TechStack = () => {
 
   return (
     <>
-      <Card className="border border-gray">
+      <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          <div className="flex items-center gap-2 font-bold">
+          <div className="flex items-center gap-2 font-bold dark:text-white">
             <Wrench className="w-5 h-5" /> Technical Skills
           </div>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <span className="text-sm text-black cursor-pointer hover:underline">
+              <span className="text-sm text-black dark:text-white cursor-pointer hover:underline">
                 View All &gt;
               </span>
             </DialogTrigger>
             <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
               <DialogHeader>
-                <DialogTitle className="flex items-center gap-2 font-bold">
+                <DialogTitle className="flex items-center gap-2 font-bold dark:text-white">
                   <Wrench className="w-5 h-5" /> Technical Skills
                 </DialogTitle>
               </DialogHeader>
               <div className="space-y-6 mt-4">
                 {techStack.map((category, index) => (
                   <div key={index} className="space-y-3">
-                    <h3 className="text-lg font-semibold text-black-foreground flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-black-foreground dark:text-white flex items-center gap-2">
                       <span>{category.icon}</span>
                       {category.category}
                     </h3>
@@ -99,7 +99,7 @@ const TechStack = () => {
                         {category.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-2 py-1 text-xs bg-white border border-gray text-black rounded"
+                            className="px-2 py-1 text-xs rounded border border-gray-200 dark:border-gray-600 font-semibold text-black dark:text-white"
                           >
                             {tech}
                           </span>
@@ -115,7 +115,7 @@ const TechStack = () => {
         <CardContent className="space-y-6">
           {techStack.map((category, index) => (
             <div key={index} className="space-y-3">
-              <h3 className="text-sm font-semibold text-black-foreground flex items-center gap-2">
+              <h3 className="text-sm font-semibold text-black-foreground dark:text-white flex items-center gap-2">
                 <span>{category.icon}</span>
                 {category.category}
               </h3>
@@ -123,13 +123,13 @@ const TechStack = () => {
                 {getLimitedSkills(category.technologies).map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="px-2 py-1 text-xs bg-white border border-gray text-black rounded"
+                    className="px-2 py-1 text-xs rounded border border-gray-200 dark:border-gray-600 font-semibold text-black dark:text-white"
                   >
                     {tech}
                   </span>
                 ))}
                 {getRemainingSkillsCount(category.technologies) > 0 && (
-                  <span className="px-2 py-1 text-xs bg-white border border-gray text-black rounded">
+                  <span className="px-2 py-1 text-xs rounded border border-gray-200 dark:border-gray-600 font-semibold text-black dark:text-white">
                     +{getRemainingSkillsCount(category.technologies)} more
                   </span>
                 )}
