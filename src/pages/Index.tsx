@@ -18,12 +18,12 @@ const Index = () => {
         <div className="container max-w-5xl mx-auto px-4 mt-[40px] space-y-2">
 
           <div className="-mt-8 md:-mt-10 relative z-[5] flex flex-col md:flex-row gap-2 items-start">
-            <div className="md:w-[65%] w-full space-y-2">
+            <div className="md:w-[63%] w-full space-y-2">
               <About />
               <BeyondCoding/>
             </div>
 
-            <div className="md:w-[35%] w-full space-y-6">
+            <div className="md:w-[36%] w-full space-y-6">
               <Experience />
             </div>
           </div>

@@ -17,35 +17,22 @@ const experiences: ExperienceItem[] = [
       "Provided IT support, configured networks, and co-developed a secure file management system."
   },
   {
-    title: "IT Specialist Intern",
-    company: "Regional Anti-Cybercrime Unit 5",
-    year: "Feb - Jun 2025",
-    description:
-      "Provided IT support, configured networks, and co-developed a secure file management system."
-  },
-  {
     title: "Legislative Officer",
     company: "Central Student Government – Naga College Foundation",
     year: "2024 - 2025",
     description: "Developed student policies and coordinated legislative sessions."
   },
   {
+    title: "Member",
+    company: "Panthera Tigris Game Developers Association - GDAP NCF  – Naga College Foundation",
+    year: "2022 - 2025",
+    description: "Collaborated on game development projects, participated in coding workshops, and contributed to team-based game development initiatives."
+  },
+  {
     title: "Auditor",
     company: "College of Computer Studies – Naga College Foundation",
     year: "2022 - 2024",
     description: "Reviewed financial records and ensured transparency."
-  },
-  {
-    title: "Team Leader",
-    company: "Regional Startup Bootcamp",
-    year: "Dec 3 - 6, 2022",
-    description: "Led startup ideation and pitching using lean methodologies."
-  },
-  {
-    title: "Team Leader",
-    company: "Regional Startup Bootcamp",
-    year: "Dec 3 - 6, 2022",
-    description: "Led startup ideation and pitching using lean methodologies."
   },
   {
     title: "Team Leader",
@@ -86,14 +73,14 @@ const Experience = () => {
                     
                     {/* Content */}
                     <div className="ml-4 flex-1 -pt-4">
-                      <div className="flex justify-between items-start mb-1">
-                        <h3 className="font-semibold text-lg">{exp.title}</h3>
-                        <span className="text-sm text-gray-600">
+                      <div className="flex justify-between items-baseline mb-1">
+                        <h3 className="font-bold text-md">{exp.title}</h3>
+                        <span className="text-[12px] text-gray-600">
                           {exp.year}
                         </span>
                       </div>
                       
-                      <p className="text-gray-700 font-medium mb-1">{exp.company}</p>
+                      <p className="font-semibold text-gray-700 text-sm mb-1">{exp.company}</p>
                       
                       {exp.description && (
                         <p className="text-sm text-gray-600">{exp.description}</p>
