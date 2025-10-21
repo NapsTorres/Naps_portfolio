@@ -62,69 +62,54 @@ const Projects = () => {
       <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
-            <div className="flex items-center gap-2 font-bold">
+            <div className="flex items-center gap-2 font-bold dark:text-white">
               <FolderOpen className="w-5 h-5" /> Featured Projects
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <span className="text-sm text-black cursor-pointer hover:underline">
+                <span className="text-sm text-black dark:text-white cursor-pointer hover:underline">
                   View All &gt;
                 </span>
               </DialogTrigger>
               <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
-                  <DialogTitle className="flex items-center gap-2 font-bold">
-                    <FolderOpen className="w-5 h-5" /> All Projects
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="grid gap-4 md:grid-cols-2 mt-4">
-                  {projects.map((project, index) => (
-                    <div
-                      key={index}
-                      className="p-4 rounded-lg border border-border flex flex-col h-full"
-                    >
-                      <h3 className="font-semibold text-lg mb-2">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        {project.description}
-                      </p>
+                <DialogTitle className="flex items-center gap-2 font-bold dark:text-white">
+                  <FolderOpen className="w-5 h-5" /> All Projects
+                </DialogTitle>
+              </DialogHeader>
+              <div className="grid gap-4 md:grid-cols-2 mt-4">
+                {projects.map((project, index) => (
+                  <div
+                    key={index}
+                    className="p-4 rounded-lg border border-gray-200 dark:border-gray-600 hover:-translate-y-1 flex flex-col h-full transition-all duration-200"
+                  >
+                    <h3 className="font-semibold text-lg mb-2 dark:text-white">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground dark:text-gray-300 mb-4">
+                      {project.description}
+                    </p>
                       <div className="flex-1"></div>
                       <div className="flex gap-2 flex-wrap mt-auto">
                         {project.link && (
-                          <Button 
-                            variant="ghost" 
-                            size="sm" 
-                            className="h-8 px-2 hover:text-black hover:underline transition-colors"
-                            asChild
+                          <a 
+                            href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-black dark:text-white hover:underline transition-all duration-200"
                           >
-                            <a 
-                              href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-block px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
-                          >
-                              {project.link.replace('https://', '').replace('http://', '')}
-                            </a>
-
-                          </Button>
+                            {project.link.replace('https://', '').replace('http://', '')}
+                          </a>
                         )}
                         {project.video && (
-                          <Button 
-                            variant="ghost" 
-                            size="sm" 
-                            className="h-8 px-2 hover:text-black hover:underline transition-colors"
-                            asChild
+                          <a 
+                            href={project.video}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-black dark:text-white hover:underline transition-all duration-200"
                           >
-                            <a 
-                              href={project.video}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-block px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
-                            >
-                              {project.video.replace('https://', '').replace('http://', '')}
-                            </a>
-                          </Button>
+                            {project.video.replace('https://', '').replace('http://', '')}
+                          </a>
                         )}
                       </div>
                     </div>
@@ -133,65 +118,51 @@ const Projects = () => {
               </DialogContent>
             </Dialog>
           </CardTitle>
-          <CardDescription>Some of my recent work</CardDescription>
+          <CardDescription className="dark:text-gray-300">Some of my recent work</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-2">
             {getLimitedProjects(projects).map((project, index) => (
               <div
                 key={index}
-                className="p-3 bg-gray-50 rounded-lg border border-gray-200 flex flex-col h-full"
+                className="p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:-translate-y-1 flex flex-col h-full transition-all duration-200"
               >
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <div className="font-semibold text-black">{project.title}</div>
+                  <div className="font-semibold text-black dark:text-white">{project.title}</div>
                   {/* Details modal trigger per project */}
                   <Dialog>
                     <DialogTrigger asChild>
-                      <button className="text-xs text-black hover:underline transition-all duration-200">Details</button>
+                      <button className="text-xs text-black dark:text-white hover:underline transition-all duration-200">Details</button>
                     </DialogTrigger>
                     <DialogContent className="max-w-2xl">
                       <DialogHeader>
-                        <DialogTitle className="font-bold flex items-center gap-2">
+                        <DialogTitle className="font-bold flex items-center gap-2 dark:text-white">
                           <FolderOpen className="w-5 h-5" /> {project.title}
                         </DialogTitle>
                       </DialogHeader>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground dark:text-gray-300">
                         {project.description}
                       </p>
                       <div className="mt-4 flex gap-2 flex-wrap">
                         {project.link && (
-                          <Button 
-                            variant="ghost" 
-                            size="sm" 
-                            className="h-8 px-2 hover:text-black hover:underline transition-colors"
-                            asChild
+                          <a 
+                            href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-black dark:text-white hover:underline transition-all duration-200"
                           >
-                            <a 
-                                href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
-                          >
-                                {project.link.replace('https://', '').replace('http://', '')}
-                            </a>
-                          </Button>
+                            {project.link.replace('https://', '').replace('http://', '')}
+                          </a>
                         )}
                         {project.video && (
-                          <Button 
-                            variant="ghost" 
-                            size="sm" 
-                            className="h-8 px-2 hover:text-black hover:underline transition-colors"
-                            asChild
+                          <a 
+                            href={project.video}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-black dark:text-white hover:underline transition-all duration-200"
                           >
-                            <a 
-                              href={project.video}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-block px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
-                            >
-                              {project.video.replace('https://', '').replace('http://', '')}
-                            </a>
-                          </Button>
+                            {project.video.replace('https://', '').replace('http://', '')}
+                          </a>
                         )}
                       </div>
                     </DialogContent>
@@ -204,7 +175,7 @@ const Projects = () => {
                       href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
+                      className="text-xs text-black dark:text-white hover:underline transition-all duration-200"
                     >
                       {project.link.replace('https://', '').replace('http://', '')}
                     </a>
@@ -214,7 +185,7 @@ const Projects = () => {
                       href={project.video}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
+                      className="text-xs text-black dark:text-white hover:underline transition-all duration-200"
                     >
                       {project.video.replace('https://', '').replace('http://', '')}
                     </a>
