@@ -10,7 +10,7 @@ import SocialMedia from "@/components/SocialMedia";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background dark:bg-black">
       <div className="container max-w-5xl mx-auto px-4 py-12 space-y-4">
         <Hero />
       </div>
@@ -52,7 +52,7 @@ const Index = () => {
             </div>
           </div>
 
-          <footer className="text-center text-sm text-muted-foreground pt-8 pb-4">
+          <footer className="text-center text-sm text-muted-foreground dark:text-gray-400 pt-8 pb-4">
             <p>Built with React, TypeScript & Tailwind CSS</p>
           </footer>
         </div>
