@@ -6,6 +6,7 @@ import Projects from "@/components/Projects";
 import BeyondCoding from "@/components/BeyondCoding";
 import Education from "@/components/Education"
 import Certificates from "@/components/Certificates";
+import SocialMedia from "@/components/SocialMedia";
 
 const Index = () => {
   return (
@@ -42,9 +43,15 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="-mt-8 md:-mt-10 relative z-[5]">
-            <Projects />
+          <div className="-mt-8 md:-mt-10 relative z-[5] flex flex-col md:flex-row gap-2 items-start">
+            <div className="md:w-[20%] w-full space-y-6">
+              <SocialMedia />
+            </div>
+            <div className="md:w-[80%] w-full space-y-2">
+              <Projects />
+            </div>
           </div>
+
           <footer className="text-center text-sm text-muted-foreground pt-8 pb-4">
             <p>Built with React, TypeScript & Tailwind CSS</p>
           </footer>
