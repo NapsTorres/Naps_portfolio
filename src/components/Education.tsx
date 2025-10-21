@@ -1,5 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { GraduationCap } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 import ncfLogo from "@/assets/ncf.jpg";
 import dominicanLogo from "@/assets/dsc.jpg";
@@ -69,14 +77,46 @@ const Education = () => {
                 className="w-16 h-16 rounded-full object-cover ring-2 ring-primary/20 shadow-sm"
               />
               <div className="flex-1 space-y-1">
-                <h3 className="font-semibold text-lg">{edu.level}</h3>
-                <p className="text-foreground/70">{edu.institution}</p>
-                <p className="text-sm text-muted-foreground">{edu.year}</p>
-                {edu.description && (
-                  <p className="text-sm text-foreground/60 pt-1 whitespace-pre-line">
-                    {edu.description}
-                  </p>
-                )}
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-lg">{edu.level}</h3>
+                    <p className="text-foreground/70">{edu.institution}</p>
+                    <p className="text-sm text-muted-foreground">{edu.year}</p>
+                  </div>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="text-xs text-black hover:underline transition-all duration-200">
+                        Details
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-2xl">
+                      <DialogHeader>
+                        <DialogTitle className="font-bold flex items-center gap-2">
+                          <GraduationCap className="w-5 h-5" /> {edu.level}
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="flex items-center gap-4 mb-4">
+                        <img
+                          src={edu.image}
+                          alt={edu.institution}
+                          className="w-20 h-20 rounded-full object-cover ring-2 ring-primary/20 shadow-sm"
+                        />
+                        <div>
+                          <p className="text-lg font-semibold text-foreground/70">{edu.institution}</p>
+                          <p className="text-sm text-muted-foreground">{edu.year}</p>
+                        </div>
+                      </div>
+                      {edu.description && (
+                        <div className="bg-muted/30 p-4 rounded-lg">
+                          <h4 className="font-semibold mb-2">Achievements & Details:</h4>
+                          <p className="text-sm text-foreground/80 whitespace-pre-line">
+                            {edu.description}
+                          </p>
+                        </div>
+                      )}
+                    </DialogContent>
+                  </Dialog>
+                </div>
               </div>
             </div>
           ))}
