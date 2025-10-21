@@ -81,7 +81,7 @@ const Projects = () => {
                   {projects.map((project, index) => (
                     <div
                       key={index}
-                      className="p-4 rounded-lg border border-border"
+                      className="p-4 rounded-lg border border-border flex flex-col h-full"
                     >
                       <h3 className="font-semibold text-lg mb-2">
                         {project.title}
@@ -89,7 +89,8 @@ const Projects = () => {
                       <p className="text-sm text-muted-foreground mb-4">
                         {project.description}
                       </p>
-                      <div className="flex gap-2">
+                      <div className="flex-1"></div>
+                      <div className="flex gap-2 flex-wrap mt-auto">
                         {project.link && (
                           <Button 
                             variant="ghost" 
@@ -139,9 +140,9 @@ const Projects = () => {
             {getLimitedProjects(projects).map((project, index) => (
               <div
                 key={index}
-                className="p-3 bg-gray-50 rounded-lg border border-gray-200"
+                className="p-3 bg-gray-50 rounded-lg border border-gray-200 flex flex-col h-full"
               >
-                <div className="flex items-start justify-between gap-2">
+                <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="font-semibold text-black">{project.title}</div>
                   {/* Details modal trigger per project */}
                   <Dialog>
@@ -196,26 +197,29 @@ const Projects = () => {
                     </DialogContent>
                   </Dialog>
                 </div>
-                {project.link && (
-                  <a 
-                    href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-2 px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
-                  >
-                    {project.link.replace('https://', '').replace('http://', '')}
-                  </a>
-                )}
-                {project.video && (
-                  <a 
-                    href={project.video}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-2 px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
-                  >
-                    {project.video.replace('https://', '').replace('http://', '')}
-                  </a>
-                )}
+                <div className="flex-1"></div>
+                <div className="flex gap-2 flex-wrap mt-auto">
+                  {project.link && (
+                    <a 
+                      href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
+                    >
+                      {project.link.replace('https://', '').replace('http://', '')}
+                    </a>
+                  )}
+                  {project.video && (
+                    <a 
+                      href={project.video}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-2 py-1 bg-gray-100 rounded text-xs text-black hover:bg-gray-200 hover:underline transition-colors"
+                    >
+                      {project.video.replace('https://', '').replace('http://', '')}
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>
