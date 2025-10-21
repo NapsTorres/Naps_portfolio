@@ -46,7 +46,7 @@ const Hero = () => {
               <span className="font-semibold text-black text-sm">Send Email</span>
             </a>
             <a
-              href="https://buymeacoffee.com/napoleontorres"
+              href="https://buymeacoffee.com/ntorres"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:bg-gray-200 transition-colors"
