@@ -23,7 +23,7 @@ interface EducationItem {
 
 const education: EducationItem[] = [
   {
-    level: "Bachelor of Science in Information Technology (Cum Laude)",
+    level: "Bachelor of Science in Information Technology (Cum Laude - 1.36 GPA)",
     institution: "Naga College Foundation, Inc.",
     year: "2021 - 2025",
     image: ncfLogo,
