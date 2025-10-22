@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, FolderOpen } from "lucide-react";
+import { ExternalLink, FolderOpen, Eye, MoreHorizontal } from "lucide-react";
 import { useState } from "react";
 import {
   Dialog,
@@ -67,8 +67,11 @@ const Projects = () => {
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <span className="text-sm text-black dark:text-white cursor-pointer hover:underline">
-                  View All &gt;
+                <span 
+                  className="text-sm text-black dark:text-white cursor-pointer hover:underline flex items-center gap-1 hover:-translate-y-1 transition-all duration-200"
+                  title="View All"
+                >
+                  <Eye className="w-4 h-4" />
                 </span>
               </DialogTrigger>
               <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
@@ -121,7 +124,86 @@ const Projects = () => {
           <CardDescription className="dark:text-gray-300">Some of my recent work</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 gap-2">
+          {/* Mobile: Single column layout */}
+          <div className="md:hidden space-y-3">
+            {getLimitedProjects(projects).map((project, index) => (
+              <div
+                key={index}
+                className="p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:-translate-y-1 flex flex-col h-full transition-all duration-200"
+              >
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <div className="font-semibold text-black dark:text-white text-sm">{project.title}</div>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                        <button 
+                          className="text-xs text-black dark:text-white hover:underline transition-all duration-200 flex items-center gap-1 hover:-translate-y-1"
+                          title="Details"
+                        >
+                          <MoreHorizontal className="w-4 h-4" />
+                        </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-2xl">
+                      <DialogHeader>
+                        <DialogTitle className="font-bold flex items-center gap-2 dark:text-white">
+                          <FolderOpen className="w-5 h-5" /> {project.title}
+                        </DialogTitle>
+                      </DialogHeader>
+                      <p className="text-sm text-muted-foreground dark:text-gray-300">
+                        {project.description}
+                      </p>
+                      <div className="mt-4 flex gap-2 flex-wrap">
+                        {project.link && (
+                          <a 
+                            href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-black dark:text-white hover:underline transition-all duration-200"
+                          >
+                            {project.link.replace('https://', '').replace('http://', '')}
+                          </a>
+                        )}
+                        {project.video && (
+                          <a 
+                            href={project.video}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-black dark:text-white hover:underline transition-all duration-200"
+                          >
+                            {project.video.replace('https://', '').replace('http://', '')}
+                          </a>
+                        )}
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+                <div className="flex gap-2 flex-wrap">
+                  {project.link && (
+                    <a 
+                      href={project.link.startsWith('http') ? project.link : `https://${project.link}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-black dark:text-white hover:underline transition-all duration-200"
+                    >
+                      {project.link.replace('https://', '').replace('http://', '')}
+                    </a>
+                  )}
+                  {project.video && (
+                    <a 
+                      href={project.video}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-black dark:text-white hover:underline transition-all duration-200"
+                    >
+                      {project.video.replace('https://', '').replace('http://', '')}
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop/Tablet: 2x2 grid layout */}
+          <div className="hidden md:grid grid-cols-2 gap-2">
             {getLimitedProjects(projects).map((project, index) => (
               <div
                 key={index}
@@ -129,10 +211,14 @@ const Projects = () => {
               >
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="font-semibold text-black dark:text-white">{project.title}</div>
-                  {/* Details modal trigger per project */}
                   <Dialog>
                     <DialogTrigger asChild>
-                      <button className="text-xs text-black dark:text-white hover:underline transition-all duration-200">Details</button>
+                        <button 
+                          className="text-xs text-black dark:text-white hover:underline transition-all duration-200 flex items-center gap-1 hover:-translate-y-1"
+                          title="Details"
+                        >
+                          <MoreHorizontal className="w-4 h-4" />
+                        </button>
                     </DialogTrigger>
                     <DialogContent className="max-w-2xl">
                       <DialogHeader>

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, MoreHorizontal } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -85,8 +85,11 @@ const Education = () => {
                   </div>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <button className="text-xs text-black dark:text-white hover:underline transition-all duration-200">
-                        Details
+                      <button 
+                        className="text-xs text-black dark:text-white hover:underline transition-all duration-200 flex items-center gap-1 hover:-translate-y-1"
+                        title="Details"
+                      >
+                        <MoreHorizontal className="w-4 h-4" />
                       </button>
                     </DialogTrigger>
                     <DialogContent className="max-w-2xl">

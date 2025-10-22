@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Clock, Award } from "lucide-react";
+import { Clock, Award, Eye } from "lucide-react";
 
 interface Certification {
   title: string;
@@ -92,8 +92,11 @@ const Certifications = () => {
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <span className="text-sm text-black dark:text-white cursor-pointer hover:underline">
-                  View All &gt;
+                <span 
+                  className="text-sm text-black dark:text-white cursor-pointer hover:underline flex items-center gap-1 hover:-translate-y-1 transition-all duration-200"
+                  title="View All"
+                >
+                  <Eye className="w-4 h-4" />
                 </span>
               </DialogTrigger>
               <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
