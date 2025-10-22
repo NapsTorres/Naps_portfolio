@@ -47,6 +47,7 @@ const projects: Project[] = [
     description:
       "Data visualization project using Python, Pandas, and Matplotlib to analyze trade trends and generate insights.",
   }
+  
 ];
 
 const Projects = () => {

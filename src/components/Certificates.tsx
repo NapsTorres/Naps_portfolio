@@ -17,11 +17,16 @@ interface Certification {
   url?: string;
 }
 
-const recentCertifications: Certification[] = [
+const certifications: Certification[] = [
+  {
+    title: "Data Analytics Essentials",
+    organization: "Cisco",
+    url: "https://drive.google.com/file/d/1_fHUSI36sXlfjwaAp0eI3jw1dusq7-T8/view?usp=sharing"
+  },
   {
     title: "Introduction to Cybersecurity",
     organization: "Cisco",
-    url: "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html"
+    url: "https://drive.google.com/file/d/1Tb-1BuZdAwKoh2YcMcqPGTLB85opxlfP/view?usp=sharing"
   },
   {
     title: "CompTIA A+",
@@ -29,58 +34,34 @@ const recentCertifications: Certification[] = [
     url: "https://www.comptia.org/certifications/a"
   },
   {
-    title: "Data Analytics Essentials",
-    organization: "Cisco",
-    url: "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html"
+    title: "DICT Cybersecurity",
+    organization: "DICT",
+    url: "https://drive.google.com/file/d/1kIa-A_PStKon2ebRSD70_a9LPxup22GE/view?usp=sharing"
+  },
+  {
+    title: "ICIP (Critical Infrastructure Protection)",
+    organization: "OPSWAT",
+    url: "https://drive.google.com/file/d/1wcqiEl4fSL90twNzLMAIvgVgVIRK9wBX/view?usp=sharing"
   },
   {
     title: "Microsoft PowerPoint Associate",
     organization: "Certiport",
-    url: "https://certiport.pearsonvue.com/Certifications/Microsoft/MOS/Overview"
+    url: "https://drive.google.com/file/d/1gZL3IS4rnBJFKKr-LV1Ht-xFaU_degSA/view?usp=sharing"
+  },
+  {
+    title: "TOPCIT Level 2",
+    organization: "IITP",
+    url: "https://drive.google.com/file/d/1VxUoBVxtJvOdeOOueZXSiK4OIxhixBaO/view?usp=sharing"
   }
 ];
 
 const Certifications = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   
-  // All certifications for the modal
-  const allCertifications: Certification[] = [
-    {
-      title: "Introduction to Cybersecurity",
-      organization: "Cisco",
-      url: "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html"
-    },
-    {
-      title: "DICT Cybersecurity",
-      organization: "DICT",
-      url: "https://dict.gov.ph/"
-    },
-    {
-      title: "ICIP (Critical Infrastructure Protection)",
-      organization: "OPSWAT",
-      url: "https://www.opswat.com/"
-    },
-    {
-      title: "CompTIA A+",
-      organization: "CompTIA",
-      url: "https://www.comptia.org/certifications/a"
-    },
-    {
-      title: "TOPCIT Level 2",
-      organization: "IITP",
-      url: "https://www.iitp.or.kr/"
-    },
-    {
-      title: "Data Analytics Essentials",
-      organization: "Cisco",
-      url: "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html"
-    },
-    {
-      title: "Microsoft PowerPoint Associate",
-      organization: "Certiport",
-      url: "https://certiport.pearsonvue.com/Certifications/Microsoft/MOS/Overview"
-    }
-  ];
+  // Limit to first 4 certifications for initial display
+  const getLimitedCertifications = (certifications: Certification[], limit: number = 4) => {
+    return certifications.slice(0, limit);
+  };
 
   return (
     <>
@@ -106,7 +87,7 @@ const Certifications = () => {
                   </DialogTitle>
                 </DialogHeader>
                 <div className="grid grid-cols-2 gap-4 mt-4">
-                  {allCertifications.map((cert, index) => (
+                  {certifications.map((cert, index) => (
                     cert.url ? (
                       <a
                         key={index}
@@ -134,7 +115,7 @@ const Certifications = () => {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {recentCertifications.map((cert, index) => (
+          {getLimitedCertifications(certifications).map((cert, index) => (
             cert.url ? (
               <a
                 key={index}
