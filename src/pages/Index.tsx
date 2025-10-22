@@ -17,13 +17,13 @@ const Index = () => {
 
         <div className="container max-w-5xl mx-auto px-4 mt-[40px] space-y-2">
 
-          <div className="-mt-8 md:-mt-10 relative z-[5] flex flex-col md:flex-row gap-2 items-start">
-            <div className="md:w-[63%] w-full space-y-2">
+          <div className="-mt-8 md:-mt-10 relative z-[5] grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch">
+            <div className="lg:col-span-8 space-y-2 flex flex-col">
               <About />
               <BeyondCoding/>
             </div>
 
-            <div className="md:w-[36%] w-full space-y-6">
+            <div className="lg:col-span-4 flex flex-col">
               <Experience />
             </div>
           </div>
@@ -34,20 +34,20 @@ const Index = () => {
           </div>
 
           
-          <div className="-mt-8 md:-mt-10 relative z-[5] flex flex-col md:flex-row gap-2 items-start">
-            <div className="md:w-[40%] w-full space-y-2">
+          <div className="-mt-8 md:-mt-10 relative z-[5] grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch">
+            <div className="lg:col-span-5 flex flex-col">
               <Certificates />
             </div>
-            <div className="md:w-[60%] w-full space-y-6">
+            <div className="lg:col-span-7 flex flex-col">
               <TechStack />
             </div>
           </div>
 
-          <div className="-mt-8 md:-mt-10 relative z-[5] flex flex-col md:flex-row gap-2 items-start">
-            <div className="md:w-[80%] w-full space-y-6">
+          <div className="-mt-8 md:-mt-10 relative z-[5] grid grid-cols-1 xl:grid-cols-12 gap-2 items-stretch">
+            <div className="xl:col-span-10 flex flex-col">
               <Projects />
             </div>
-            <div className="md:w-[20%] w-full space-y-2">
+            <div className="xl:col-span-2 flex flex-col">
               <SocialMedia />
             </div>
           </div>
