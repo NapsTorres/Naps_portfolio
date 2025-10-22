@@ -49,7 +49,7 @@ const Hero = () => {
             {/* Name with badge inline */}
             <div className="flex items-center justify-between mb-2">
               <h1 className="text-4xl md:text-2xl font-bold tracking-tight flex items-center gap-2 dark:text-white">
-                Napoleon Torres
+                Napoleon R. Torres
                 <BadgeCheck className="w-5 h-5 text-white fill-blue-500 stroke-white" />
               </h1>
               {/* Dark Mode Toggle Switch */}
