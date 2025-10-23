@@ -46,8 +46,19 @@ const projects: Project[] = [
     title: "Data Analytics Dashboard",
     description:
       "Data visualization project using Python, Pandas, and Matplotlib to analyze trade trends and generate insights.",
+  },
+  {
+    title: "Circular Coin Detection Web App (OpenCV)",
+    description:
+      "Web application that detects circular coins in images using OpenCV and Python.",
+    link: "https://circularcoindetection.streamlit.app/",
+  },
+  {
+    title: "Coin Counting Detection (Watershed + OpenCV)",
+    description:
+      "Web application that detects circular coins and count the number of coins in images using Watershed and OpenCV algorithms.",
+      link: "https://counting-coins-using-watershed-algorithm.streamlit.app/",
   }
-  
 ];
 
 const Projects = () => {
