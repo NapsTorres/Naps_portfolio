@@ -40,7 +40,7 @@ const projects: Project[] = [
     title: "Clickay - E-Commerce Platform for Used Items",
     description:
       "MERN-based marketplace for buying and selling second-hand products with user authentication and filtering.",
-    link: "https://your-live-demo-link.com", // optional
+    link: "https://clickay.vercel.app", // optional
   },
   {
     title: "Data Analytics Dashboard",
