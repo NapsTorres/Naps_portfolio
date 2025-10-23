@@ -34,7 +34,7 @@ const projects: Project[] = [
     title: "SEMS - Sport Event Management System",
     description:
       "Full-stack web app that automates sports tournament scheduling using elimination and round-robin algorithms.",
-    link: "https://your-live-demo-link.com", // optional
+    link: "http://sems-frontend.s3-website-ap-northeast-1.amazonaws.com", // optional
   },
   {
     title: "Clickay - E-Commerce Platform for Used Items",
