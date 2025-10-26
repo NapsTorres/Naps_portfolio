@@ -21,44 +21,56 @@ interface Project {
 const projects: Project[] = [
   {
     title: "CRIMS - Cybercrime Records & Incident Management System",
-    description:
-      "Secure file and evidence management system for Regional Anti-Cybercrime Unit with access control and digital evidence handling.",
-    link: "crims-alpha.vercel.app", 
-    video: "https://tinyurl.com/CRIMS-DEMO",
-    // Example of new link types:
-    // documentation: "https://docs.example.com",
-    // video: "https://youtube.com/watch?v=example",
-    // figma: "https://figma.com/design/example"
+    description: "Secure cybercrime platform with encrypted evidence handling, role-based access control, and real-time analytics dashboard (React, Node.js, Supabase, PostgreSQL).",
+    link: "https://crims-alpha.vercel.app",
+    video: "https://tinyurl.com/CRIMS-DEMO"
   },
   {
     title: "SEMS - Sport Event Management System",
-    description:
-      "Full-stack web app that automates sports tournament scheduling using elimination and round-robin algorithms.",
-    link: "http://sems-frontend.s3-website-ap-northeast-1.amazonaws.com", // optional
+    description: "Full-stack web app that automates sports tournament scheduling using elimination and round-robin algorithms (React, Node.js, SQL, AWS S3).",
+    link: "http://sems-frontend.s3-website-ap-northeast-1.amazonaws.com"
   },
   {
     title: "Clickay - E-Commerce Platform for Used Items",
-    description:
-      "MERN-based marketplace for buying and selling second-hand products with user authentication and filtering.",
-    link: "https://clickay.vercel.app", // optional
-  },
-  {
-    title: "Data Analytics Dashboard",
-    description:
-      "Data visualization project using Python, Pandas, and Matplotlib to analyze trade trends and generate insights.",
+    description: "MERN-based marketplace for buying and selling second-hand products with authentication, filtering, and responsive UI (MongoDB, Express, React, Node.js).",
+    link: "https://clickay.vercel.app"
   },
   {
     title: "Circular Coin Detection Web App (OpenCV)",
-    description:
-      "Web application that detects circular coins in images using OpenCV and Python.",
-    link: "https://circularcoindetection.streamlit.app/",
+    description: "Detects circular coins from images using edge detection and Hough Transform (Python, OpenCV, Streamlit).",
+    link: "https://circular-coin-detection.streamlit.app/"
   },
   {
     title: "Coin Counting Detection (Watershed + OpenCV)",
-    description:
-      "Web application that detects circular coins and count the number of coins in images using Watershed and OpenCV algorithms.",
-      link: "https://counting-coins-using-watershed-algorithm.streamlit.app/",
+    description: "Counts overlapping coins using image segmentation and Watershed algorithm (Python, OpenCV, Streamlit).",
+    link: "https://counting-coins-using-watershed-algorithm.streamlit.app/"
+  },
+  {
+    title: "Coin Recognition Web App (OpenCV + MLPClassifier)",
+    description: "Recognizes coin denominations using image processing and machine learning classifier (Python, OpenCV, scikit-learn, Streamlit).",
+    link: "https://coin-recognition-web-app-opencv-mlpclassifier.streamlit.app/"
+  },
+  {
+    title: "Face & Hand Landmark Detection Web App",
+    description: "Real-time facial and hand landmark detection using Mediapipe and OpenCV (Python, Streamlit).",
+    link: "https://face-hand-landmark-detection-web-app.streamlit.app/"
+  },
+  {
+    title: "Sales and Product Analysis Report of A Small Business",
+    description: "Data analysis on sales trends and product performance using statistical visualization techniques (Python, Pandas, Seaborn, Matplotlib).",
+    link: "https://colab.research.google.com/drive/1_gVO7ELQ62ghUys923DA4dywx4dxZDF4?usp=sharing"
+  },
+  {
+    title: "Maternal Health and Delivery Trends in the Philippines",
+    description: "Exploratory data analysis on healthcare delivery trends with comparative visual insights (Python, Pandas, Matplotlib, Seaborn).",
+    link: "https://colab.research.google.com/drive/1iyLBTTDLLPInOjp7V9JN0ZBJJLV0_cDn?usp=sharing"
+  },
+  {
+    title: "Heat Index Monitoring in Bicol Region",
+    description: "Heatmap visualization of heat index trends across stations using R and data transformation techniques (R, ggplot2, dplyr).",
+    link: "http://rpubs.com/NapsTorres/HeatmapBicol"
   }
+  
 ];
 
 const Projects = () => {
