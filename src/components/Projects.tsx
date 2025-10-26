@@ -69,8 +69,13 @@ const projects: Project[] = [
     title: "Heat Index Monitoring in Bicol Region",
     description: "Heatmap visualization of heat index trends across stations using R and data transformation techniques (R, ggplot2, dplyr).",
     link: "http://rpubs.com/NapsTorres/HeatmapBicol"
+  },
+  {
+    title: "Typhoon Bicol Analysis",
+    description: "Analysis of typhoon Bicol using R and data transformation techniques (R, ggplot2, dplyr).",
+    link: "http://rpubs.com/NapsTorres/Typhoon_Bicol"
   }
-  
+
 ];
 
 const Projects = () => {
