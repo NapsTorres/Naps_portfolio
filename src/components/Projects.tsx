@@ -28,7 +28,7 @@ const projects: Project[] = [
   {
     title: "SEMS - Sport Event Management System",
     description: "Full-stack web app that automates sports tournament scheduling using elimination and round-robin algorithms (React, Node.js, SQL, AWS S3).",
-    link: "https://naps-portfolio.vercel.app"
+    link: "https://ncf-sems.vercel.app"
   },
   {
     title: "Clickay - E-Commerce Platform for Used Items",
