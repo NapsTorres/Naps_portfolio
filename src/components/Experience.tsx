@@ -10,6 +10,13 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
+    title: "Process Delivery Specialist & Data Analyst",
+    company: "IBM",
+    year: "Jan 2026",
+    description:
+      "Manage and analyze enterprise claims and deductions, develop automation solutions, and create data-driven reports using Excel, Power BI, and Python to improve operational efficiency and support business decision-making."
+  },
+  {
     title: "IT Specialist Intern",
     company: "Regional Anti-Cybercrime Unit 5",
     year: "Feb - Jun 2025",
@@ -52,7 +59,7 @@ const Experience = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="h-[535px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800">
+        <div className="h-[582px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800">
           <div className="relative">
             {/* Simple timeline line */}
             <div className="absolute left-4 top-2 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600" />
