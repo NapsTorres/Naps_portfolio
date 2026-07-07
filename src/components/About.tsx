@@ -10,14 +10,16 @@ const About = () => {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4 text-foreground/80">
-    <p>
-  I am a multi-disciplinary IT professional specializing in data engineering, analytics, and IT infrastructure. I work with Python (Pandas, NumPy, Matplotlib), SQL, R, and Orange to transform data into actionable insights.
+ <p>
+  I'm an IT professional passionate about cloud computing, networking, infrastructure, automation, and software engineering. Through my experience at IBM and my internship with the Regional Anti-Cybercrime Unit, I've developed practical skills in enterprise operations, IT support, networking, and secure application development.
 </p>
+
 <p>
-  I also have hands-on experience in network configuration, system administration, and IT support, as well as full-stack web development using the MERN stack.
+  My technical background includes Python, JavaScript, TypeScript, SQL, PostgreSQL, React, Node.js, and Power BI, and I'm actively building expertise in Microsoft Azure, Linux, Docker, and cloud networking.
 </p>
+
 <p>
-  I aim to grow in roles such as Data Engineer, Data Scientist, or IT Specialist, where I can apply my expertise in data, software, and infrastructure to build secure and scalable solutions.
+  My goal is to become a Cloud Engineer who designs secure, scalable, and reliable cloud solutions while continuously learning new technologies and industry best practices.
 </p>
 
       </CardContent>

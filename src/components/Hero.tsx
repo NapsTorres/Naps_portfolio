@@ -77,7 +77,7 @@ const Hero = () => {
             </div>
 
             <p className="text-l font-bold text-foreground/80 dark:text-gray-300">
-              Data Engineer | Data Analyst | IT & Network Specialist | Web Developer
+              Process Delivery Specialist & Data Analyst at IBM | Aspiring Cloud Practicioner
             </p>
           </div>
 
