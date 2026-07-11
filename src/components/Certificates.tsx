@@ -19,9 +19,14 @@ interface Certification {
 
 const certifications: Certification[] = [
   {
-    title: "Data Analytics Essentials",
-    organization: "Cisco",
-    url: "https://drive.google.com/file/d/1_fHUSI36sXlfjwaAp0eI3jw1dusq7-T8/view?usp=sharing"
+    title: "Cloud Computing Fundamentals",
+    organization: "IBM",
+    url: "https://drive.google.com/file/d/1lE6cJ90JAOnqq5K6myBnzMaA0uIlrPJv/view?usp=sharing"
+  },
+  {
+    title: "Getting Started with Cybersecurity",
+    organization: "IBM",
+    url: "https://drive.google.com/file/d/1SMC_v22DASxkW6TnpWr2IAAk4Eht8esg/view?usp=sharing"
   },
   {
     title: "Introduction to Cybersecurity",
@@ -29,19 +34,44 @@ const certifications: Certification[] = [
     url: "https://drive.google.com/file/d/1Tb-1BuZdAwKoh2YcMcqPGTLB85opxlfP/view?usp=sharing"
   },
   {
-    title: "CompTIA A+",
-    organization: "CompTIA",
-    url: "https://www.comptia.org/certifications/a"
+    title: "ICIP (Critical Infrastructure Protection)",
+    organization: "OPSWAT",
+    url: "https://drive.google.com/file/d/1wcqiEl4fSL90twNzLMAIvgVgVIRK9wBX/view?usp=sharing"
   },
-  {
+   {
     title: "DICT Cybersecurity",
     organization: "DICT",
     url: "https://drive.google.com/file/d/1kIa-A_PStKon2ebRSD70_a9LPxup22GE/view?usp=sharing"
   },
   {
-    title: "ICIP (Critical Infrastructure Protection)",
-    organization: "OPSWAT",
-    url: "https://drive.google.com/file/d/1wcqiEl4fSL90twNzLMAIvgVgVIRK9wBX/view?usp=sharing"
+    title: "Enterprise Design Thinking Practitioner",
+    organization: "IBM",
+    url: "https://drive.google.com/file/d/1qRvbdyfDp0tsGL8S1MOtJZVFcy07UhoY/view?usp=sharing"
+  },
+  {
+    title: "Agile Explorer",
+    organization: "IBM",
+    url: "https://drive.google.com/file/d/1XebRdwSeQjaiEItslHbe2UYBKvwRiwa8/view?usp=sharing"
+  },
+  {
+    title: "Data Analytics Essentials",
+    organization: "Cisco",
+    url: "https://drive.google.com/file/d/1_fHUSI36sXlfjwaAp0eI3jw1dusq7-T8/view?usp=sharing"
+  },
+  {
+    title: "IBM Garage Essentials",
+    organization: "IBM",
+    url: "https://drive.google.com/file/d/1GzP5WGi_Af6VSrUOhzeopJaWKckcbqL0/view?usp=sharing"
+  },
+  {
+    title: "Finance & Accounting Essentials",
+    organization: "IBM",
+    url: "https://drive.google.com/file/d/1uwWKKeZxSkU8Z968SezjE-49v4_RXmG_/view?usp=sharing"
+  },
+  {
+    title: "CompTIA A+",
+    organization: "CompTIA",
+    url: "https://www.comptia.org/certifications/a"
   },
   {
     title: "Microsoft PowerPoint Associate",
