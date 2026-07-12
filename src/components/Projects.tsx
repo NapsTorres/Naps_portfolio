@@ -20,15 +20,23 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "CRIMS - Cybercrime Records & Incident Management System",
-    description: "Secure cybercrime platform with encrypted evidence handling, role-based access control, and real-time analytics dashboard (React, Node.js, Supabase, PostgreSQL).",
-    link: "https://crims-alpha.vercel.app",
-    video: "https://tinyurl.com/CRIMS-DEMO"
+  title: "Deduction Workflow Automation Platform",
+  description:
+    "Developed a Python and Streamlit web application that automated the trade promotion deduction investigation process. Integrated reference, promotional event, and shipment datasets into a unified search platform, reducing manual investigation time through high-performance data processing, automated Excel reporting, and optimized CSV-based data retrieval.",
+  link: "https://upclp-automation.streamlit.app",
   },
   {
-    title: "SEMS - Sport Event Management System",
-    description: "Full-stack web app that automates sports tournament scheduling using elimination and round-robin algorithms (React, Node.js, SQL, AWS S3).",
-    link: "https://ncf-sems.vercel.app"
+  title: "CRIMS – Cybercrime Records & Incident Management System",
+  description:
+    "Designed and developed a secure cybercrime records management system during my internship with the Philippine National Police. Features include role-based access control, encrypted evidence management, case tracking, dashboard analytics, and centralized file storage using React, Node.js, Supabase, and PostgreSQL.",
+  link: "https://crims-alpha.vercel.app",
+  video: "https://tinyurl.com/CRIMS-DEMO"
+  },
+  {
+  title: "SEMS – Sports Event Management System",
+  description:
+    "Built a full-stack web application that automates sports tournament management, including team registration, scheduling, score management, and standings. Supports both Single & Double elimination and also round-robin tournament formats while utilizing AWS S3 for media storage.",
+  link: "https://ncf-sems.vercel.app"
   },
   {
     title: "Clickay - E-Commerce Platform for Used Items",
