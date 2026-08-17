@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link, Github, Instagram, Facebook } from "lucide-react";
+import { Link, Github, Instagram, Facebook, Badge} from "lucide-react";
 
 interface SocialPlatform {
   name: string;
@@ -17,6 +17,11 @@ const socialPlatforms: SocialPlatform[] = [
     name: "GitHub",
     icon: <Github className="w-5 h-5" />,
     url: "https://github.com/NapsTorres"
+  },
+  {
+    name: "Credly",
+    icon: <Badge className="w-5 h-5" />,
+    url: "https://www.credly.com/users/napoleon-torres"
   },
   {
     name: "Instagram",
@@ -38,7 +43,7 @@ const SocialMedia = () => {
           <Link className="w-4 h-4" /> Social Links
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-2">
+      <CardContent className="space-y-1.5">
         {socialPlatforms.map((platform, index) => (
           <a
             key={index}
