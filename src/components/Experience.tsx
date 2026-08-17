@@ -52,7 +52,7 @@ const experiences: ExperienceItem[] = [
 
 const Experience = () => {
   return (
-    <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+    <Card className="section-card">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 font-bold">
           <Briefcase className="w-5 h-5" /> Experience

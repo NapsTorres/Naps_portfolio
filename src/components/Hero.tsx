@@ -96,7 +96,7 @@ const Hero = () => {
               href="https://buymeacoffee.com/ntorres"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-2 py-1 rounded-lg border border-gray-200 dark:border-gray-600 hover:-translate-y-1 transition-all duration-200"
+              className="item-box flex items-center gap-1.5 px-2 py-1"
             >
               <Coffee className="w-3 h-3" />
               <span className="font-semibold text-xs text-black dark:text-white">Buy me a coffee</span>

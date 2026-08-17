@@ -8,10 +8,10 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 240 20% 98%;
+    --background: 40 8% 90%;
     --foreground: 240 10% 15%;
 
-    --card: 0 0% 100%;
+    --card: 40 6% 94%;
     --card-foreground: 240 10% 15%;
 
     --popover: 0 0% 100%;
@@ -59,10 +59,10 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 240 10% 10%;
+    --background: 240 10% 7%;
     --foreground: 240 5% 96%;
 
-    --card: 240 8% 14%;
+    --card: 240 6% 13%;
     --card-foreground: 240 5% 96%;
 
     --popover: 240 8% 14%;
@@ -92,9 +92,9 @@ All colors MUST be HSL.
     --gradient-primary: linear-gradient(135deg, hsl(270 80% 65%), hsl(263 70% 50%));
     --gradient-card: linear-gradient(135deg, rgba(30, 27, 45, 0.9), rgba(30, 27, 45, 0.7));
     
-    --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.3);
-    --shadow-md: 0 8px 24px -4px hsl(0 0% 0% / 0.4);
-    --shadow-lg: 0 16px 48px -8px hsl(0 0% 0% / 0.5);
+    --shadow-sm: 0 2px 8px -2px hsl(0 0% 100% / 0.06), 0 0 0 1px hsl(0 0% 100% / 0.05);
+    --shadow-md: 0 8px 24px -4px hsl(0 0% 100% / 0.1), 0 0 0 1px hsl(0 0% 100% / 0.08);
+    --shadow-lg: 0 16px 48px -8px hsl(0 0% 100% / 0.14), 0 0 0 1px hsl(0 0% 100% / 0.1);
     --shadow-glow: 0 0 32px hsl(270 80% 65% / 0.3);
 
     --sidebar-background: 240 5.9% 10%;
@@ -115,5 +115,49 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .section-card {
+    @apply border border-gray-300/60 bg-card transition-shadow duration-300;
+    @apply dark:border-white/10 dark:bg-card;
+    box-shadow: 0 8px 24px -4px hsl(0 0% 0% / 0.16);
+  }
+
+  .section-card:hover {
+    box-shadow: 0 18px 44px -6px hsl(0 0% 0% / 0.22);
+  }
+
+  .dark .section-card {
+    box-shadow: 0 8px 24px -4px hsl(0 0% 100% / 0.12);
+  }
+
+  .dark .section-card:hover {
+    box-shadow: 0 18px 44px -6px hsl(0 0% 100% / 0.18);
+  }
+
+  .item-box {
+    @apply rounded-lg border border-gray-300/60 transition-all duration-200;
+    @apply hover:-translate-y-1.5 hover:bg-black/[0.07];
+    @apply dark:border-white/10 dark:hover:bg-white/[0.12];
+    box-shadow: 0 2px 8px -2px hsl(0 0% 0% / 0.08);
+  }
+
+  .item-box:hover {
+    box-shadow: 0 12px 32px -4px hsl(0 0% 0% / 0.18);
+  }
+
+  .dark .item-box {
+    box-shadow: 0 2px 8px -2px hsl(0 0% 100% / 0.06);
+  }
+
+  .dark .item-box:hover {
+    box-shadow: 0 12px 32px -4px hsl(0 0% 100% / 0.14);
+  }
+
+  .item-tag {
+    @apply px-2 py-1 text-xs rounded border border-gray-300/60 font-semibold text-black dark:text-white transition-all duration-200;
+    @apply hover:bg-black/[0.07] dark:border-white/10 dark:hover:bg-white/[0.12];
   }
 }

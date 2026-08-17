@@ -96,7 +96,7 @@ const Projects = () => {
 
   return (
     <>
-      <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+      <Card className="section-card">
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2 font-bold dark:text-white">
@@ -121,7 +121,7 @@ const Projects = () => {
                 {projects.map((project, index) => (
                   <div
                     key={index}
-                    className="p-4 rounded-lg border border-gray-200 dark:border-gray-600 hover:-translate-y-1 flex flex-col h-full transition-all duration-200"
+                    className="item-box p-4 flex flex-col h-full"
                   >
                     <h3 className="font-semibold text-lg mb-2 dark:text-white">
                       {project.title}
@@ -166,7 +166,7 @@ const Projects = () => {
             {getLimitedProjects(projects).map((project, index) => (
               <div
                 key={index}
-                className="p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:-translate-y-1 flex flex-col h-full transition-all duration-200"
+                className="item-box p-3 flex flex-col h-full"
               >
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="font-semibold text-black dark:text-white text-sm">{project.title}</div>
@@ -244,7 +244,7 @@ const Projects = () => {
             {getLimitedProjects(projects).map((project, index) => (
               <div
                 key={index}
-                className="p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:-translate-y-1 flex flex-col h-full transition-all duration-200"
+                className="item-box p-3 flex flex-col h-full"
               >
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="font-semibold text-black dark:text-white">{project.title}</div>

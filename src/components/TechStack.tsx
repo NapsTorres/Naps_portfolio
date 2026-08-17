@@ -70,7 +70,7 @@ const TechStack = () => {
 
   return (
     <>
-      <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+      <Card className="section-card">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center gap-2 font-bold dark:text-white">
@@ -102,7 +102,7 @@ const TechStack = () => {
                         {category.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-2 py-1 text-xs rounded border border-gray-200 dark:border-gray-600 font-semibold text-black dark:text-white"
+                            className="item-tag"
                           >
                             {tech}
                           </span>
@@ -126,13 +126,13 @@ const TechStack = () => {
                 {getLimitedSkills(category.technologies).map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="px-2 py-1 text-xs rounded border border-gray-200 dark:border-gray-600 font-semibold text-black dark:text-white"
+                    className="item-tag"
                   >
                     {tech}
                   </span>
                 ))}
                 {getRemainingSkillsCount(category.technologies) > 0 && (
-                  <span className="px-2 py-1 text-xs rounded border border-gray-200 dark:border-gray-600 font-semibold text-black dark:text-white">
+                  <span className="item-tag">
                     +{getRemainingSkillsCount(category.technologies)} more
                   </span>
                 )}

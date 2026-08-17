@@ -10,7 +10,7 @@ import SocialMedia from "@/components/SocialMedia";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background dark:bg-black">
+    <div className="min-h-screen bg-background">
       <div className="container max-w-5xl mx-auto px-4 py-12 space-y-4">
         <Hero />
       </div>

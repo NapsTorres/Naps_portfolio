@@ -116,7 +116,7 @@ const Certifications = () => {
 
   return (
     <>
-      <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+      <Card className="section-card">
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2 font-bold dark:text-white">
@@ -124,24 +124,31 @@ const Certifications = () => {
               Certifications & Credentials
             </div>
 
-            <Button
-              variant="ghost"
-              size="icon"
+            <button
+              type="button"
               onClick={openAll}
               title="View All Certifications"
-              className="hover:-translate-y-1 transition-all duration-200"
+              className="p-1 rounded-md text-black dark:text-white hover:-translate-y-1 transition-all duration-200"
             >
               <Eye className="w-4 h-4" />
-            </Button>
+            </button>
           </CardTitle>
         </CardHeader>
 
         <CardContent className="space-y-3">
           {visibleCertifications.map((cert, index) => (
-            <button
+            <div
               key={index}
+              role="button"
+              tabIndex={0}
               onClick={() => openPreview(cert)}
-              className="w-full text-left p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:-translate-y-1 hover:shadow-md transition-all duration-200"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openPreview(cert);
+                }
+              }}
+              className="item-box w-full text-left p-3 cursor-pointer"
             >
               <div className="flex items-center justify-between gap-3">
                 <div className="min-w-0">
@@ -166,9 +173,11 @@ const Certifications = () => {
                   )}
                 </div>
 
-                <Eye className="w-4 h-4 shrink-0 text-gray-500" />
+                <span className="flex items-center hover:-translate-y-1 transition-all duration-200">
+                  <Eye className="w-4 h-4 shrink-0 text-black dark:text-white" />
+                </span>
               </div>
-            </button>
+            </div>
           ))}
         </CardContent>
       </Card>
@@ -268,10 +277,18 @@ const Certifications = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 overflow-y-auto pr-2">
                 {certifications.map((cert, index) => (
-                  <button
+                  <div
                     key={index}
+                    role="button"
+                    tabIndex={0}
                     onClick={() => openPreview(cert)}
-                    className="text-left p-4 rounded-lg border border-gray-200 dark:border-gray-600 hover:-translate-y-1 hover:shadow-md transition-all duration-200"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        openPreview(cert);
+                      }
+                    }}
+                    className="item-box text-left p-4 cursor-pointer"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
@@ -296,9 +313,11 @@ const Certifications = () => {
                         )}
                       </div>
 
-                      <Eye className="w-4 h-4 shrink-0 text-gray-500" />
+                      <span className="flex items-center hover:-translate-y-1 transition-all duration-200">
+                        <Eye className="w-4 h-4 shrink-0 text-black dark:text-white" />
+                      </span>
                     </div>
-                  </button>
+                  </div>
                 ))}
               </div>
             </>
