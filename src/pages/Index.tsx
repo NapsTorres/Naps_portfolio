@@ -35,10 +35,10 @@ const Index = () => {
 
           
           <div className="-mt-8 md:-mt-10 relative z-[5] grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch">
-            <div className="lg:col-span-5 flex flex-col">
+            <div className="lg:col-span-6 flex flex-col">
               <Certificates />
             </div>
-            <div className="lg:col-span-7 flex flex-col">
+            <div className="lg:col-span-6 flex flex-col">
               <TechStack />
             </div>
           </div>
