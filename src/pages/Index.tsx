@@ -53,7 +53,7 @@ const Index = () => {
           </div>
 
           <footer className="text-center text-sm text-muted-foreground dark:text-gray-400 pt-8 pb-4">
-            <p>Built with React, TypeScript & Tailwind CSS</p>
+            <p className="text-center text-sm text-muted-foreground dark:text-gray-400">Built with React, TypeScript & Tailwind CSS</p>
           </footer>
         </div>
       </div>
