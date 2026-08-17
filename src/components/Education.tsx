@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { GraduationCap, Eye } from "lucide-react";
+import { GraduationCap, Eye, FileText, ExternalLink, ArrowLeft } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -12,12 +13,18 @@ import ncfLogo from "@/assets/ncf.jpg";
 import dominicanLogo from "@/assets/dsc.jpg";
 import calabangaLogo from "@/assets/cwcs.jpg";
 
+interface EducationPreview {
+  title: string;
+  pdfUrl?: string;
+}
+
 interface EducationItem {
   level: string;
   institution: string;
   year: string;
   image: string;
   description?: string;
+  previews?: EducationPreview[];
 }
 
 const education: EducationItem[] = [
@@ -27,41 +34,62 @@ const education: EducationItem[] = [
     year: "2021 - 2025",
     image: ncfLogo,
     description: `• GWA: 1.36 / 5.00 
-• Dean’s Lister 
+• Dean's Lister 
 • MTV Leadership Awardee (Silver Medallion) 
 • Excellence in Practicum Awardee
-• DBP Rise Scholar`
+• DBP Rise Scholar`,
+    previews: [
+      { title: "Diploma", pdfUrl: "/education/ncf-diploma.pdf" },
+      { title: "Cum Laude Certificate", pdfUrl: "/education/ncf-cum-laude.pdf" },
+      { title: "MTV Leadership Award (Silver Medallion)", pdfUrl: "/education/ncf-leadership.pdf" },
+      { title: "Excellence in Practicum", pdfUrl: "/education/ncf-practicum.pdf" },
+      { title: "DBP Rise Scholar", pdfUrl: "/education/ncf-dbp-rise.pdf" },
+    ],
   },
   {
     level: "Senior High School – GAS (Top 5% of Class)",
     institution: "Dominican School of Calabanga",
     year: "2019 - 2021",
     image: dominicanLogo,
-    description: "• Graduated with Academic Honors"
+    description: "• Graduated with Academic Honors",
   },
   {
     level: "High School (Top 10% of Class)",
     institution: "Dominican School of Calabanga",
     year: "2015 - 2019",
     image: dominicanLogo,
-    description: "• Consistent Honor Student and active in leadership roles"
+    description: "• Consistent Honor Student and active in leadership roles",
   },
   {
     level: "Elementary (1st Honorable Mention)",
     institution: "Calabanga West Central School",
     year: "2008 - 2015",
     image: calabangaLogo,
-    description: "• Graduated with honors and demonstrated early academic excellence"
-  }
+    description: "• Graduated with honors and demonstrated early academic excellence",
+  },
 ];
 
 const Education = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedEdu, setSelectedEdu] = useState<EducationItem | null>(null);
+  const [selectedPreview, setSelectedPreview] = useState<EducationPreview | null>(null);
 
   const openDetails = (edu: EducationItem) => {
     setSelectedEdu(edu);
+    setSelectedPreview(null);
     setIsDialogOpen(true);
+  };
+
+  const openPreview = (preview: EducationPreview) => {
+    setSelectedPreview(preview);
+  };
+
+  const handleDialogChange = (open: boolean) => {
+    setIsDialogOpen(open);
+    if (!open) {
+      setSelectedEdu(null);
+      setSelectedPreview(null);
+    }
   };
 
   return (
@@ -111,39 +139,125 @@ const Education = () => {
         </CardContent>
       </Card>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-2xl">
-          {selectedEdu && (
+      <Dialog open={isDialogOpen} onOpenChange={handleDialogChange}>
+        <DialogContent
+          className={
+            selectedPreview
+              ? "max-w-5xl w-[95vw] h-[90vh] p-4"
+              : "max-w-2xl w-[95vw] max-h-[85vh]"
+          }
+        >
+          {selectedPreview ? (
             <>
-              <DialogHeader>
-                <DialogTitle className="font-bold flex items-center gap-2 dark:text-white">
-                  <GraduationCap className="w-5 h-5" /> {selectedEdu.level}
+              <DialogHeader className="space-y-1">
+                <DialogTitle className="flex items-center gap-2">
+                  <FileText className="w-5 h-5" />
+                  {selectedPreview.title}
                 </DialogTitle>
+                {selectedEdu && (
+                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                    {selectedEdu.institution} · {selectedEdu.year}
+                  </div>
+                )}
               </DialogHeader>
-              <div className="flex items-center gap-4 mb-4">
-                <img
-                  src={selectedEdu.image}
-                  alt={selectedEdu.institution}
-                  className="w-20 h-20 rounded-full object-cover ring-2 ring-primary/20 shadow-sm"
-                />
-                <div>
-                  <p className="text-lg font-semibold text-foreground/70 dark:text-gray-300">
-                    {selectedEdu.institution}
-                  </p>
-                  <p className="text-sm text-muted-foreground dark:text-gray-400">
-                    {selectedEdu.year}
-                  </p>
-                </div>
+
+              <div className="flex-1 min-h-0 overflow-hidden">
+                {selectedPreview.pdfUrl ? (
+                  <iframe
+                    src={selectedPreview.pdfUrl}
+                    title={`${selectedPreview.title} preview`}
+                    className="w-full h-full min-h-[65vh] rounded-lg border border-gray-200 dark:border-gray-700"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full min-h-[65vh] border rounded-lg">
+                    <p className="text-gray-500">Document preview unavailable.</p>
+                  </div>
+                )}
               </div>
-              {selectedEdu.description && (
-                <div className="p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2 dark:text-white">Achievements & Details:</h4>
-                  <p className="text-sm text-foreground/80 dark:text-gray-300 whitespace-pre-line">
-                    {selectedEdu.description}
-                  </p>
-                </div>
-              )}
+
+              <div className="flex justify-between gap-2 pt-2">
+                <Button variant="ghost" onClick={() => setSelectedPreview(null)}>
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back
+                </Button>
+
+                {selectedPreview.pdfUrl && (
+                  <Button
+                    variant="outline"
+                    onClick={() =>
+                      window.open(selectedPreview.pdfUrl, "_blank", "noopener,noreferrer")
+                    }
+                  >
+                    <FileText className="w-4 h-4 mr-2" />
+                    Open PDF
+                    <ExternalLink className="w-3.5 h-3.5 ml-2" />
+                  </Button>
+                )}
+              </div>
             </>
+          ) : (
+            selectedEdu && (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="font-bold flex items-center gap-2 dark:text-white">
+                    <GraduationCap className="w-5 h-5" /> {selectedEdu.level}
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="flex items-center gap-4 mb-4">
+                  <img
+                    src={selectedEdu.image}
+                    alt={selectedEdu.institution}
+                    className="w-20 h-20 rounded-full object-cover ring-2 ring-primary/20 shadow-sm"
+                  />
+                  <div>
+                    <p className="text-lg font-semibold text-foreground/70 dark:text-gray-300">
+                      {selectedEdu.institution}
+                    </p>
+                    <p className="text-sm text-muted-foreground dark:text-gray-400">
+                      {selectedEdu.year}
+                    </p>
+                  </div>
+                </div>
+                {selectedEdu.description && (
+                  <div className="p-4 rounded-lg">
+                    <h4 className="font-semibold mb-2 dark:text-white">Achievements & Details:</h4>
+                    <p className="text-sm text-foreground/80 dark:text-gray-300 whitespace-pre-line">
+                      {selectedEdu.description}
+                    </p>
+                  </div>
+                )}
+                {selectedEdu.previews && selectedEdu.previews.length > 0 && (
+                  <div className="mt-4">
+                    <h4 className="font-semibold mb-3 dark:text-white">Documents & Awards:</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {selectedEdu.previews.map((preview, index) => (
+                        <div
+                          key={index}
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => openPreview(preview)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              openPreview(preview);
+                            }
+                          }}
+                          className="item-box flex items-center justify-between gap-3 p-3 cursor-pointer"
+                        >
+                          <div className="flex items-center gap-2 min-w-0">
+                            <FileText className="w-4 h-4 shrink-0 text-primary" />
+                            <span className="text-sm font-medium text-black dark:text-white truncate">
+                              {preview.title}
+                            </span>
+                          </div>
+                          <Eye className="w-4 h-4 shrink-0 text-black dark:text-white" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            )
           )}
         </DialogContent>
       </Dialog>
