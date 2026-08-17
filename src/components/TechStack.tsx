@@ -40,8 +40,8 @@ const techStack: TechCategory[] = [
     category: "Networking & IT Support",
     icon: <Globe className="w-4 h-4" />,
     technologies: [
-      "Troubleshooting", "System Maintenance", "Hardware Support",
       "TCP/IP", "DNS", "DHCP", "VPN", "Firewalls", 
+      "Troubleshooting", "System Maintenance", "Hardware Support",
       "Switches", "Wireless Access Points", 
       "Cisco Packet Tracer"
     ]
