@@ -35,7 +35,7 @@ const projects: Project[] = [
     description:
       "Designed and developed a secure cybercrime records management system during my internship with the Philippine National Police. Features include role-based access control, encrypted evidence management, case tracking, dashboard analytics, and centralized file storage using React, Node.js, Supabase, and PostgreSQL.",
     previews: [
-      { title: "Demo Walkthrough", type: "video", url: "https://tinyurl.com/CRIMS-DEMO" },
+      { title: "Demo Walkthrough", type: "video", url: "https://drive.google.com/file/d/1kAYICRdCZCbply8FeafwkLJ_GMlVpq-P/view?usp=drive_link" },
     ],
   },
   {
