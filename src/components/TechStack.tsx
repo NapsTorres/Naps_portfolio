@@ -40,8 +40,8 @@ const techStack: TechCategory[] = [
     category: "Networking & IT Support",
     icon: <Globe className="w-4 h-4" />,
     technologies: [
-      "TCP/IP", "DNS", "DHCP", "VPN", "Firewalls", 
       "Troubleshooting", "System Maintenance", "Hardware Support",
+      "TCP/IP", "DNS", "DHCP", "VPN", "Firewalls", 
       "Switches", "Wireless Access Points", 
       "Cisco Packet Tracer"
     ]
@@ -50,8 +50,8 @@ const techStack: TechCategory[] = [
     category: "Tools & Platforms",
     icon: <Settings className="w-4 h-4" />,
     technologies: [
-      "GitHub", "Jira", "Figma", "Microsoft Office Suite",
-      "Orange", "TeamViewer", "AnyDesk"
+      "GitHub", "TeamViewer", "Figma", "Microsoft Office Suite",
+      "Orange", "Jira", "AnyDesk"
     ]
   }
 ];
@@ -70,7 +70,7 @@ const TechStack = () => {
 
   return (
     <>
-      <Card className="section-card">
+      <Card className="section-card h-full">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center gap-2 font-bold dark:text-white">

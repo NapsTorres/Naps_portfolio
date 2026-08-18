@@ -25,75 +25,81 @@ interface Certification {
 
 const certifications: Certification[] = [
   {
+    title: "OPIT Bootcamp 2026 – From Zero to Tech",
+    organization: "OPIT (Open Institute of Technology)",
+    program: "Cloud Dev · AI Applications · Cybersecurity",
+    pdfUrl: "src/assets/Certificates/OPIT Bootcamp Certificate - NAPOLEON R. TORRES_page-0001.pdf",
+  },
+  {
     title: "Cloud Computing Fundamentals",
     organization: "IBM",
-    pdfUrl: "/certificates/cloud-computing-fundamentals.pdf",
+    pdfUrl: "src/assets/Certificates/Cloud computing.pdf",
+    credentialUrl: "YOUR_CREDLY_BADGE_URL",
+  },
+    {
+    title: "Getting Started with Cybersecurity",
+    organization: "IBM",
+    pdfUrl: "src/assets/Certificates/Cyber sec.pdf",
     credentialUrl: "YOUR_CREDLY_BADGE_URL",
   },
   {
     title: "Introduction to Cybersecurity",
     organization: "Cisco Networking Academy",
-    pdfUrl: "/certificates/introduction-to-cybersecurity.pdf",
+    pdfUrl: "src/assets/Certificates/Introduction to Cybersecurity.pdf",
     credentialUrl: "YOUR_CREDLY_BADGE_URL",
   },
   {
     title: "ICIP (Critical Infrastructure Protection)",
     organization: "OPSWAT",
-    pdfUrl: "/certificates/icip.pdf",
-    credentialUrl: "YOUR_CREDLY_BADGE_URL",
-  },
-  {
-    title: "Getting Started with Cybersecurity",
-    organization: "IBM",
-    pdfUrl: "/certificates/getting-started-cybersecurity.pdf",
+    pdfUrl: "src/assets/Certificates/introduction_to_cip.pdf",
     credentialUrl: "YOUR_CREDLY_BADGE_URL",
   },
   {
     title: "Data Analytics Essentials",
     organization: "Cisco Networking Academy",
-    pdfUrl: "/certificates/data-analytics-essentials.pdf",
+    pdfUrl: "src/assets/Certificates/DataAnalyticsEssentialsUpdate20251022-29-3omtph.pdf",
     credentialUrl: "YOUR_CREDLY_BADGE_URL",
   },
   {
     title: "Enterprise Design Thinking Practitioner",
     organization: "IBM",
-    pdfUrl: "/certificates/enterprise-design-thinking.pdf",
+    pdfUrl: "src/assets/Certificates/EnterpriseDesignThinkingPractitioner_Badge20260708-7-gtk4vd.pdf",
     credentialUrl: "YOUR_CREDLY_BADGE_URL",
   },
   {
     title: "Agile Explorer",
     organization: "IBM",
-    pdfUrl: "/certificates/agile-explorer.pdf",
+    pdfUrl: "src/assets/Certificates/Agile.pdf",
     credentialUrl: "YOUR_CREDLY_BADGE_URL",
   },
   {
     title: "C++ Essentials 1",
     organization: "Cisco Networking Academy",
-    pdfUrl: "/certificates/microsoft-powerpoint-associate.pdf",
+    pdfUrl: "src/assets/Certificates/CEssentials1Update20251022-29-t18m2k.pdf",
     credentialUrl: "YOUR_CREDLY_BADGE_URL",
   },
   {
     title: "IBM Garage Essentials",
     organization: "IBM",
-    pdfUrl: "/certificates/ibm-garage-essentials.pdf",
+    pdfUrl: "src/assets/Certificates/Garage.pdf",
     credentialUrl: "YOUR_CREDLY_BADGE_URL",
   },
   {
     title: "Finance & Accounting Essentials",
     organization: "IBM",
-    pdfUrl: "/certificates/finance-accounting-essentials.pdf",
+    pdfUrl: "src/assets/Certificates/Finance.pdf",
     credentialUrl: "YOUR_CREDLY_BADGE_URL",
   },
   {
     title: "Microsoft PowerPoint Associate",
     organization: "Certiport",
-    pdfUrl: "/certificates/microsoft-powerpoint-associate.pdf",
+    pdfUrl: "src/assets/Certificates/View Transcript.pdf",
     credentialUrl: "YOUR_CREDLY_BADGE_URL",
   },
   {
     title: "TOPCIT Level 2",
     organization: "IITP",
-    pdfUrl: "/certificates/topcit-level-2.pdf",
+    pdfUrl: "src/assets/Certificates/Topcit Level 2.pdf",
   },
 ];
 
@@ -145,7 +151,7 @@ const Certifications = () => {
 
   return (
     <>
-      <Card className="section-card">
+      <Card className="section-card h-full">
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2 font-bold dark:text-white">
@@ -303,7 +309,7 @@ const Certifications = () => {
                 </DialogTitle>
               </DialogHeader>
 
-              <div ref={scrollRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 overflow-y-auto max-h-[70vh] pr-1">
+              <div ref={scrollRef} className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 overflow-y-auto max-h-[70vh] pr-1">
                 {certifications.map((cert, index) => (
                   <div
                     key={index}
@@ -316,13 +322,13 @@ const Certifications = () => {
                         openPreview(cert, true);
                       }
                     }}
-                    className="item-box p-4 flex flex-col h-full cursor-pointer"
+                    className="item-box p-3 flex flex-col cursor-pointer"
                   >
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <h3 className="font-semibold text-lg dark:text-white">{cert.title}</h3>
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <h3 className="font-semibold text-base dark:text-white line-clamp-1">{cert.title}</h3>
                       <Eye className="w-4 h-4 shrink-0 text-black dark:text-white" />
                     </div>
-                    <p className="text-sm text-muted-foreground dark:text-gray-300">
+                    <p className="text-sm text-muted-foreground dark:text-gray-300 line-clamp-1">
                       {cert.organization}
                       {cert.program && ` · ${cert.program}`}
                       {cert.date && ` · ${cert.date}`}
