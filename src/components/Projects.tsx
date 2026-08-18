@@ -35,7 +35,7 @@ const projects: Project[] = [
     description:
       "Designed and developed a secure cybercrime records management system during my internship with the Philippine National Police. Features include role-based access control, encrypted evidence management, case tracking, dashboard analytics, and centralized file storage using React, Node.js, Supabase, and PostgreSQL.",
     previews: [
-      { title: "Demo Walkthrough", type: "video", url: "https://tinyurl.com/CRIMS-DEMO" },
+      { title: "Demo Walkthrough", type: "video", url: "https://drive.google.com/file/d/1kAYICRdCZCbply8FeafwkLJ_GMlVpq-P/view?usp=drive_link" },
     ],
   },
   {
@@ -144,12 +144,17 @@ const projects: Project[] = [
   },
 ];
 
+const isStreamlitUrl = (url: string) => url.includes("streamlit.app");
+
 const getEmbedUrl = (preview: ProjectPreview): string | null => {
   const { url, type } = preview;
 
   if (type === "external") return null;
 
-  if (type === "website") return url;
+  if (type === "website") {
+    if (isStreamlitUrl(url)) return null;
+    return url;
+  }
 
   const youtubeMatch = url.match(
     /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]+)/
@@ -259,10 +264,10 @@ const Projects = () => {
       </Card>
 
       <Dialog open={isDialogOpen} onOpenChange={handleDialogChange}>
-        <DialogContent className="max-w-5xl w-[95vw] h-[90vh] p-4 overflow-y-auto">
+        <DialogContent className={`max-w-5xl w-[95vw] p-4 ${selectedPreview ? "h-[90vh]" : "max-h-[85vh] overflow-y-auto"}`}>
           {selectedPreview && selectedProject ? (
-            <>
-              <DialogHeader className="space-y-1">
+            <div className="flex flex-col gap-3 h-full">
+              <DialogHeader className="space-y-1 shrink-0">
                 <DialogTitle className="flex items-center gap-2 dark:text-white">
                   <FolderOpen className="w-5 h-5" />
                   {selectedProject.title}
@@ -277,31 +282,51 @@ const Projects = () => {
                   <iframe
                     src={embedUrl}
                     title={`${selectedProject.title} preview`}
-                    className="w-full h-full min-h-[65vh] rounded-md"
+                    className="w-full h-full rounded-md"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center gap-4 min-h-[40vh] border-2 border-gray-400/70 dark:border-white/30 rounded-lg p-6 text-center">
+                <div className="flex-1 flex flex-col items-center justify-center gap-4 border-2 border-gray-400/70 dark:border-white/30 rounded-lg p-6 text-center">
                   <PreviewIcon type={selectedPreview.type} />
-                  <p className="text-gray-500 dark:text-gray-400">
-                    This preview opens in a new tab.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      window.open(selectedPreview.url, "_blank", "noopener,noreferrer")
-                    }
-                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Open {selectedPreview.title}
-                  </button>
+                  {isStreamlitUrl(selectedPreview.url) ? (
+                    <>
+                      <p className="text-gray-500 dark:text-gray-400 max-w-sm">
+                        Streamlit apps block embedded previews. Visit the live app directly in your browser.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          window.open(selectedPreview.url, "_blank", "noopener,noreferrer")
+                        }
+                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Open in Streamlit
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-gray-500 dark:text-gray-400">
+                        This preview opens in a new tab.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          window.open(selectedPreview.url, "_blank", "noopener,noreferrer")
+                        }
+                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Open {selectedPreview.title}
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
 
-              <div className="flex justify-between gap-2 pt-2">
+              <div className="flex justify-between items-center gap-2 shrink-0">
                 <button
                   type="button"
                   onClick={handleBack}
@@ -322,7 +347,7 @@ const Projects = () => {
                   Open in New Tab
                 </button>
               </div>
-            </>
+            </div>
           ) : (
             <>
               <DialogHeader>
