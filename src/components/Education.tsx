@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { GraduationCap, Eye, FileText, ExternalLink, ArrowLeft } from "lucide-react";
 import {
@@ -140,13 +139,7 @@ const Education = () => {
       </Card>
 
       <Dialog open={isDialogOpen} onOpenChange={handleDialogChange}>
-        <DialogContent
-          className={
-            selectedPreview
-              ? "max-w-5xl w-[95vw] h-[90vh] p-4"
-              : "max-w-2xl w-[95vw] max-h-[85vh]"
-          }
-        >
+        <DialogContent className="max-w-2xl w-[95vw] max-h-[85vh] overflow-y-auto p-4">
           {selectedPreview ? (
             <>
               <DialogHeader className="space-y-1">
@@ -161,37 +154,42 @@ const Education = () => {
                 )}
               </DialogHeader>
 
-              <div className="flex-1 min-h-0 overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-hidden rounded-lg border-2 border-gray-400/70 dark:border-white/30 p-1">
                 {selectedPreview.pdfUrl ? (
                   <iframe
                     src={selectedPreview.pdfUrl}
                     title={`${selectedPreview.title} preview`}
-                    className="w-full h-full min-h-[65vh] rounded-lg border border-gray-200 dark:border-gray-700"
+                    className="w-full h-full min-h-[65vh] rounded-md"
                   />
                 ) : (
-                  <div className="flex items-center justify-center h-full min-h-[65vh] border rounded-lg">
+                  <div className="flex items-center justify-center h-full min-h-[65vh] rounded-md">
                     <p className="text-gray-500">Document preview unavailable.</p>
                   </div>
                 )}
               </div>
 
               <div className="flex justify-between gap-2 pt-2">
-                <Button variant="ghost" onClick={() => setSelectedPreview(null)}>
-                  <ArrowLeft className="w-4 h-4 mr-2" />
+                <button
+                  type="button"
+                  onClick={() => setSelectedPreview(null)}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  <ArrowLeft className="w-4 h-4" />
                   Back
-                </Button>
+                </button>
 
                 {selectedPreview.pdfUrl && (
-                  <Button
-                    variant="outline"
+                  <button
+                    type="button"
                     onClick={() =>
                       window.open(selectedPreview.pdfUrl, "_blank", "noopener,noreferrer")
                     }
+                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
                   >
-                    <FileText className="w-4 h-4 mr-2" />
+                    <FileText className="w-4 h-4" />
                     Open PDF
-                    <ExternalLink className="w-3.5 h-3.5 ml-2" />
-                  </Button>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </button>
                 )}
               </div>
             </>
@@ -245,12 +243,14 @@ const Education = () => {
                           className="item-box flex items-center justify-between gap-3 p-3 cursor-pointer"
                         >
                           <div className="flex items-center gap-2 min-w-0">
-                            <FileText className="w-4 h-4 shrink-0 text-primary" />
+                            <FileText className="w-4 h-4 shrink-0 text-black dark:text-white" />
                             <span className="text-sm font-medium text-black dark:text-white truncate">
                               {preview.title}
                             </span>
                           </div>
-                          <Eye className="w-4 h-4 shrink-0 text-black dark:text-white" />
+                          <span className="flex items-center hover:-translate-y-1 transition-all duration-200">
+                            <Eye className="w-4 h-4 shrink-0 text-black dark:text-white" />
+                          </span>
                         </div>
                       ))}
                     </div>

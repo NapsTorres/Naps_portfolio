@@ -259,15 +259,7 @@ const Projects = () => {
       </Card>
 
       <Dialog open={isDialogOpen} onOpenChange={handleDialogChange}>
-        <DialogContent
-          className={
-            selectedPreview
-              ? embedUrl
-                ? "max-w-5xl w-[95vw] h-[90vh] p-4"
-                : "max-w-2xl w-[95vw] max-h-[85vh]"
-              : "max-w-4xl w-[95vw] max-h-[85vh] overflow-y-auto"
-          }
-        >
+        <DialogContent className="max-w-5xl w-[95vw] h-[90vh] p-4 overflow-y-auto">
           {selectedPreview && selectedProject ? (
             <>
               <DialogHeader className="space-y-1">
@@ -281,47 +273,54 @@ const Projects = () => {
               </DialogHeader>
 
               {embedUrl ? (
-                <div className="flex-1 min-h-0 overflow-hidden">
+                <div className="flex-1 min-h-0 overflow-hidden rounded-lg border-2 border-gray-400/70 dark:border-white/30 p-1">
                   <iframe
                     src={embedUrl}
                     title={`${selectedProject.title} preview`}
-                    className="w-full h-full min-h-[65vh] rounded-lg border border-gray-200 dark:border-gray-700"
+                    className="w-full h-full min-h-[65vh] rounded-md"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center gap-4 min-h-[40vh] border rounded-lg p-6 text-center">
+                <div className="flex flex-col items-center justify-center gap-4 min-h-[40vh] border-2 border-gray-400/70 dark:border-white/30 rounded-lg p-6 text-center">
                   <PreviewIcon type={selectedPreview.type} />
                   <p className="text-gray-500 dark:text-gray-400">
                     This preview opens in a new tab.
                   </p>
-                  <Button
+                  <button
+                    type="button"
                     onClick={() =>
                       window.open(selectedPreview.url, "_blank", "noopener,noreferrer")
                     }
+                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
                   >
-                    <ExternalLink className="w-4 h-4 mr-2" />
+                    <ExternalLink className="w-4 h-4" />
                     Open {selectedPreview.title}
-                  </Button>
+                  </button>
                 </div>
               )}
 
               <div className="flex justify-between gap-2 pt-2">
-                <Button variant="ghost" onClick={handleBack}>
-                  <ArrowLeft className="w-4 h-4 mr-2" />
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  <ArrowLeft className="w-4 h-4" />
                   Back
-                </Button>
+                </button>
 
-                <Button
-                  variant="outline"
+                <button
+                  type="button"
                   onClick={() =>
                     window.open(selectedPreview.url, "_blank", "noopener,noreferrer")
                   }
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  <ExternalLink className="w-4 h-4 mr-2" />
+                  <ExternalLink className="w-4 h-4" />
                   Open in New Tab
-                </Button>
+                </button>
               </div>
             </>
           ) : (
