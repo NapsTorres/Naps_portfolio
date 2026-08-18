@@ -20,10 +20,19 @@ interface Certification {
   program?: string;
   date?: string;
   pdfUrl?: string;
+  imageUrl?: string;
   credentialUrl?: string;
 }
 
 const certifications: Certification[] = [
+  // ── Cloud & Infrastructure ──────────────────────────────
+  {
+    title: "Cloud Computing Fundamentals",
+    organization: "IBM",
+    program: "Cloud Architecture · Virtualization · Hybrid Cloud",
+    pdfUrl: "/Certificates/Cloud computing.pdf",
+    credentialUrl: "https://www.credly.com/badges/a5a514db-2a1d-412b-9704-68afe1dc6f0e/public_url",
+  },
   {
     title: "OPIT Bootcamp 2026 – From Zero to Tech",
     organization: "OPIT (Open Institute of Technology)",
@@ -31,18 +40,19 @@ const certifications: Certification[] = [
     pdfUrl: "/Certificates/OPIT Bootcamp Certificate - NAPOLEON R. TORRES_page-0001.pdf",
   },
   {
-    title: "2026 IBMer watsonx Challenge",
-    organization: "IBM",
-    program: "AI Software Development · watsonx · IBM Consulting Advantage",
-    pdfUrl: "/Certificates/2026IBMerwatsonxChallenge_Badge20260818-20-3ad733.pdf",
-    credentialUrl: "https://www.credly.com/badges/6e382fd8-0232-4377-a025-7c700cfd2d9f/public_url",
+    title: "ICIP (Critical Infrastructure Protection)",
+    organization: "OPSWAT",
+    program: "OT/ICS Security · SCADA · Critical Infrastructure Protection",
+    pdfUrl: "/Certificates/introduction_to_cip.pdf",
+    credentialUrl: "https://www.credly.com/badges/b99e3593-16f6-4b90-86b2-4991f363619e/public_url",
   },
+  // ── Network & Cybersecurity ─────────────────────────────
   {
-    title: "Cloud Computing Fundamentals",
-    organization: "IBM",
-    program: "Cloud Architecture · Virtualization · Hybrid Cloud",
-    pdfUrl: "/Certificates/Cloud computing.pdf",
-    credentialUrl: "https://www.credly.com/badges/a5a514db-2a1d-412b-9704-68afe1dc6f0e/public_url",
+    title: "Introduction to Cybersecurity",
+    organization: "Cisco Networking Academy",
+    program: "Network Security · Online Safety · Cyber Threats",
+    pdfUrl: "/Certificates/Introduction to Cybersecurity.pdf",
+    credentialUrl: "https://www.credly.com/badges/82e6fa48-b631-4d4f-9d71-090b0677f42c/public_url",
   },
   {
     title: "Getting Started with Cybersecurity",
@@ -52,25 +62,49 @@ const certifications: Certification[] = [
     credentialUrl: "https://www.credly.com/badges/01955cfa-1acd-41d6-b8f3-e905f5f50aef/public_url",
   },
   {
-    title: "Introduction to Cybersecurity",
-    organization: "Cisco Networking Academy",
-    program: "Network Security · Online Safety · Cyber Threats",
-    pdfUrl: "/Certificates/Introduction to Cybersecurity.pdf",
-    credentialUrl: "https://www.credly.com/badges/82e6fa48-b631-4d4f-9d71-090b0677f42c/public_url",
+    title: "BlackStride Cyber Webinar Series",
+    organization: "BlackStride Cyber",
+    program: "Cybersecurity Awareness · Emerging Threats · Defensive Skills",
+    pdfUrl: "/Certificates/BlackStride Cyber Cert.pdf",
+    credentialUrl: "https://credsverse.com/credentials/be65ba47-c23d-4436-a64c-567f98e2ba9c?preview=1",
   },
-  {
-    title: "ICIP (Critical Infrastructure Protection)",
-    organization: "OPSWAT",
-    program: "OT/ICS Security · SCADA · Critical Infrastructure Protection",
-    pdfUrl: "/Certificates/introduction_to_cip.pdf",
-    credentialUrl: "https://www.credly.com/badges/b99e3593-16f6-4b90-86b2-4991f363619e/public_url",
-  },
+  // ── Data & Development ──────────────────────────────────
   {
     title: "Data Analytics Essentials",
     organization: "Cisco Networking Academy",
     program: "Data Analysis · Visualization · Decision Making",
     pdfUrl: "/Certificates/DataAnalyticsEssentialsUpdate20251022-29-3omtph.pdf",
     credentialUrl: "https://www.credly.com/badges/986c2b90-f24a-45e1-8497-8106a6bee2b1/public_url",
+  },
+  {
+    title: "C++ Essentials 1",
+    organization: "Cisco Networking Academy",
+    program: "Object-Oriented Programming · Memory Management · STL",
+    pdfUrl: "/Certificates/CEssentials1Update20251022-29-t18m2k.pdf",
+    credentialUrl: "https://www.credly.com/badges/a0baa8b3-4ed9-4c60-9c5f-9ffe57c01229/public_url",
+  },
+  // ── AI & Emerging Tech ──────────────────────────────────
+  {
+    title: "2026 IBMer watsonx Challenge",
+    organization: "IBM",
+    program: "AI Software Development · watsonx · IBM Consulting Advantage",
+    pdfUrl: "/Certificates/2026IBMerwatsonxChallenge_Badge20260818-20-3ad733.pdf",
+    credentialUrl: "https://www.credly.com/badges/6e382fd8-0232-4377-a025-7c700cfd2d9f/public_url",
+  },
+  {
+    title: "AI Skills Fest 2026",
+    organization: "Microsoft",
+    program: "AI Productivity · Content Creation · Responsible AI",
+    imageUrl: "/Certificates/ai-skills-fest-2026.png",
+    credentialUrl: "https://www.credly.com/badges/6a94ef2b-12e1-4d15-a359-040c3b4f6b61/public_url",
+  },
+  // ── Methodology & Professional ──────────────────────────
+  {
+    title: "IBM Garage Essentials",
+    organization: "IBM",
+    program: "Innovation · DevOps · Lean Startup Methodology",
+    pdfUrl: "/Certificates/Garage.pdf",
+    credentialUrl: "https://www.credly.com/badges/19066bee-2541-451c-aad0-87156b079417/public_url",
   },
   {
     title: "Enterprise Design Thinking Practitioner",
@@ -86,19 +120,12 @@ const certifications: Certification[] = [
     pdfUrl: "/Certificates/Agile.pdf",
     credentialUrl: "https://www.credly.com/badges/a62ad237-c0e9-42eb-ab3a-28ee69b7e3a2/public_url",
   },
+  // ── General & Business ──────────────────────────────────
   {
-    title: "C++ Essentials 1",
-    organization: "Cisco Networking Academy",
-    program: "Object-Oriented Programming · Memory Management · STL",
-    pdfUrl: "/Certificates/CEssentials1Update20251022-29-t18m2k.pdf",
-    credentialUrl: "https://www.credly.com/badges/a0baa8b3-4ed9-4c60-9c5f-9ffe57c01229/public_url",
-  },
-  {
-    title: "IBM Garage Essentials",
-    organization: "IBM",
-    program: "Innovation · DevOps · Lean Startup Methodology",
-    pdfUrl: "/Certificates/Garage.pdf",
-    credentialUrl: "https://www.credly.com/badges/19066bee-2541-451c-aad0-87156b079417/public_url",
+    title: "TOPCIT Level 2",
+    organization: "IITP",
+    program: "Software Competency · IT Fundamentals · Korea",
+    pdfUrl: "/Certificates/Topcit Level 2.pdf",
   },
   {
     title: "Finance & Accounting Essentials",
@@ -113,12 +140,6 @@ const certifications: Certification[] = [
     program: "Slide Design · Presentation Skills · Office Productivity",
     pdfUrl: "/Certificates/View Transcript.pdf",
     credentialUrl: "https://www.credly.com/badges/ce0a2ed2-252a-4d91-a22f-7e7ecc20019b/public_url",
-  },
-  {
-    title: "TOPCIT Level 2",
-    organization: "IITP",
-    program: "Software Competency · IT Fundamentals · Korea",
-    pdfUrl: "/Certificates/Topcit Level 2.pdf",
   },
 ];
 
@@ -259,7 +280,7 @@ const Certifications = () => {
                 </div>
               </DialogHeader>
 
-              {/* PDF */}
+              {/* PDF / Image */}
               <div className="flex-1 min-h-0 overflow-hidden rounded-lg border-2 border-gray-400/70 dark:border-white/30 p-1">
                 {selectedCert.pdfUrl ? (
                   <iframe
@@ -267,6 +288,14 @@ const Certifications = () => {
                     title={`${selectedCert.title} certificate`}
                     className="w-full h-full min-h-[65vh] rounded-md"
                   />
+                ) : selectedCert.imageUrl ? (
+                  <div className="flex items-center justify-center h-full min-h-[65vh] rounded-md bg-gray-50 dark:bg-white/5">
+                    <img
+                      src={selectedCert.imageUrl}
+                      alt={`${selectedCert.title} badge`}
+                      className="max-h-[65vh] max-w-full object-contain rounded-md"
+                    />
+                  </div>
                 ) : (
                   <div className="flex items-center justify-center h-full min-h-[65vh] rounded-md">
                     <p className="text-gray-500">
