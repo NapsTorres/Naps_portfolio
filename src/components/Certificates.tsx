@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ArrowLeft } from "lucide-react";
 import {
   Dialog,
@@ -101,10 +101,15 @@ const Certifications = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
   const [returnToList, setReturnToList] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const savedScroll = useRef(0);
 
   const visibleCertifications = certifications.slice(0, 4);
 
   const openPreview = (cert: Certification, fromList = false) => {
+    if (fromList && scrollRef.current) {
+      savedScroll.current = scrollRef.current.scrollTop;
+    }
     setSelectedCert(cert);
     setReturnToList(fromList);
     setIsDialogOpen(true);
@@ -120,6 +125,11 @@ const Certifications = () => {
     if (returnToList) {
       setSelectedCert(null);
       setReturnToList(false);
+      requestAnimationFrame(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollTop = savedScroll.current;
+        }
+      });
       return;
     }
     setIsDialogOpen(false);
@@ -293,7 +303,7 @@ const Certifications = () => {
                 </DialogTitle>
               </DialogHeader>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div ref={scrollRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 overflow-y-auto max-h-[70vh] pr-1">
                 {certifications.map((cert, index) => (
                   <div
                     key={index}

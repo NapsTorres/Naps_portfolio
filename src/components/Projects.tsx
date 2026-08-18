@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ExternalLink, FolderOpen, Eye, Globe, PlayCircle, ArrowLeft, Loader2 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ExternalLink, FolderOpen, Eye, Globe, PlayCircle, ArrowLeft } from "lucide-react";
+import { useState, useRef } from "react";
 import {
   Dialog,
   DialogContent,
@@ -34,7 +35,7 @@ const projects: Project[] = [
     description:
       "Designed and developed a secure cybercrime records management system during my internship with the Philippine National Police. Features include role-based access control, encrypted evidence management, case tracking, dashboard analytics, and centralized file storage using React, Node.js, Supabase, and PostgreSQL.",
     previews: [
-      { title: "Demo Walkthrough", type: "video", url: "https://drive.google.com/file/d/1kAYICRdCZCbply8FeafwkLJ_GMlVpq-P/view?usp=drive_link" },
+      { title: "Demo Walkthrough", type: "video", url: "https://tinyurl.com/CRIMS-DEMO" },
     ],
   },
   {
@@ -108,8 +109,8 @@ const projects: Project[] = [
     previews: [
       {
         title: "View Notebook",
-        type: "external",
-        url: "https://colab.research.google.com/drive/1_gVO7ELQ62ghUys923DA4dywx4dxZDF4?usp=sharing",
+        type: "website",
+        url: "https://nbviewer.org/gist/NapsTorres/17dffa8e9f1dcd18ef26b3e066b95f60",
       },
     ],
   },
@@ -120,8 +121,8 @@ const projects: Project[] = [
     previews: [
       {
         title: "View Notebook",
-        type: "external",
-        url: "https://colab.research.google.com/drive/1iyLBTTDLLPInOjp7V9JN0ZBJJLV0_cDn?usp=sharing",
+        type: "website",
+        url: "https://nbviewer.org/gist/NapsTorres/44fddfe074be03b374a2d1b481c79ec8",
       },
     ],
   },
@@ -130,7 +131,7 @@ const projects: Project[] = [
     description:
       "Heatmap visualization of heat index trends across stations using R and data transformation techniques (R, ggplot2, dplyr).",
     previews: [
-      { title: "View Report", type: "external", url: "http://rpubs.com/NapsTorres/HeatmapBicol" },
+      { title: "View Report", type: "website", url: "https://rstudio-pubs-static.s3.amazonaws.com/1359674_a17ffc97b66c45d48f9dad6b67bdf2fb.html" },
     ],
   },
   {
@@ -138,13 +139,10 @@ const projects: Project[] = [
     description:
       "Analysis of typhoon Bicol using R and data transformation techniques (R, ggplot2, dplyr).",
     previews: [
-      { title: "View Report", type: "external", url: "http://rpubs.com/NapsTorres/Typhoon_Bicol" },
+      { title: "View Report", type: "website", url: "https://rstudio-pubs-static.s3.amazonaws.com/1360116_33d06cd906be42dd862ee91f02d981d1.html" },
     ],
   },
 ];
-
-const needsScreenshot = (preview: ProjectPreview) =>
-  preview.type === "external" || (preview.type === "website" && preview.url.includes("streamlit.app"));
 
 const getEmbedUrl = (preview: ProjectPreview): string | null => {
   const { url, type } = preview;
@@ -152,7 +150,10 @@ const getEmbedUrl = (preview: ProjectPreview): string | null => {
   if (type === "external") return null;
 
   if (type === "website") {
-    if (url.includes("streamlit.app")) return null;
+    if (url.includes(".streamlit.app")) {
+      const separator = url.includes("?") ? "&" : "?";
+      return `${url}${separator}embed=true`;
+    }
     return url;
   }
 
@@ -178,13 +179,15 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedPreview, setSelectedPreview] = useState<ProjectPreview | null>(null);
   const [returnToList, setReturnToList] = useState(false);
-  const [screenshotUrl, setScreenshotUrl] = useState<string | null>(null);
-  const [screenshotLoading, setScreenshotLoading] = useState(false);
-  const [screenshotError, setScreenshotError] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const savedScroll = useRef(0);
 
   const visibleProjects = projects.slice(0, 4);
 
   const openPreview = (project: Project, fromList = false) => {
+    if (fromList && scrollRef.current) {
+      savedScroll.current = scrollRef.current.scrollTop;
+    }
     setSelectedProject(project);
     setSelectedPreview(project.previews?.[0] ?? null);
     setReturnToList(fromList);
@@ -202,6 +205,11 @@ const Projects = () => {
     if (returnToList) {
       setSelectedProject(null);
       setSelectedPreview(null);
+      requestAnimationFrame(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollTop = savedScroll.current;
+        }
+      });
       return;
     }
     setIsDialogOpen(false);
@@ -213,51 +221,8 @@ const Projects = () => {
       setSelectedProject(null);
       setSelectedPreview(null);
       setReturnToList(false);
-      setScreenshotUrl(null);
-      setScreenshotError(false);
     }
   };
-
-  useEffect(() => {
-    if (!selectedPreview || !needsScreenshot(selectedPreview)) {
-      setScreenshotUrl(null);
-      setScreenshotError(false);
-      return;
-    }
-    setScreenshotUrl(null);
-    setScreenshotError(false);
-    setScreenshotLoading(true);
-
-    let cancelled = false;
-    const attempt = (retries: number) => {
-      fetch(`https://api.microlink.io/?url=${encodeURIComponent(selectedPreview.url)}&screenshot=true&meta=false&waitForTimeout=5000`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (cancelled) return;
-          const url = data?.data?.screenshot?.url;
-          if (url) {
-            setScreenshotUrl(url);
-            setScreenshotLoading(false);
-          } else if (retries > 0) {
-            setTimeout(() => attempt(retries - 1), 2000);
-          } else {
-            setScreenshotError(true);
-            setScreenshotLoading(false);
-          }
-        })
-        .catch(() => {
-          if (cancelled) return;
-          if (retries > 0) {
-            setTimeout(() => attempt(retries - 1), 2000);
-          } else {
-            setScreenshotError(true);
-            setScreenshotLoading(false);
-          }
-        });
-    };
-    attempt(4);
-    return () => { cancelled = true; };
-  }, [selectedPreview]);
 
   const embedUrl = selectedPreview ? getEmbedUrl(selectedPreview) : null;
 
@@ -310,10 +275,10 @@ const Projects = () => {
       </Card>
 
       <Dialog open={isDialogOpen} onOpenChange={handleDialogChange}>
-        <DialogContent className={`max-w-5xl w-[95vw] p-4 ${selectedPreview ? "h-[90vh]" : "max-h-[85vh] overflow-y-auto"}`}>
+        <DialogContent className="max-w-5xl w-[95vw] h-[90vh] p-4 overflow-y-auto">
           {selectedPreview && selectedProject ? (
-            <div className="flex flex-col gap-3 h-full">
-              <DialogHeader className="space-y-1 shrink-0">
+            <>
+              <DialogHeader className="space-y-1">
                 <DialogTitle className="flex items-center gap-2 dark:text-white">
                   <FolderOpen className="w-5 h-5" />
                   {selectedProject.title}
@@ -328,37 +293,13 @@ const Projects = () => {
                   <iframe
                     src={embedUrl}
                     title={`${selectedProject.title} preview`}
-                    className="w-full h-full rounded-md"
+                    className="w-full h-full min-h-[65vh] rounded-md"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
                 </div>
-              ) : needsScreenshot(selectedPreview) ? (
-                <div className="flex-1 min-h-0 rounded-lg border-2 border-gray-400/70 dark:border-white/30 relative overflow-hidden">
-                  {screenshotLoading && (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                      <Loader2 className="w-6 h-6 animate-spin text-gray-400" />
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Loading preview…</p>
-                    </div>
-                  )}
-                  {screenshotUrl && (
-                    <img
-                      src={screenshotUrl}
-                      alt={`${selectedProject.title} screenshot`}
-                      className="absolute inset-0 w-full h-full object-cover object-top"
-                    />
-                  )}
-                  {screenshotError && !screenshotLoading && (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center p-6">
-                      <Globe className="w-6 h-6 text-gray-400" />
-                      <p className="text-sm text-gray-500 dark:text-gray-400 max-w-sm">
-                        Screenshot unavailable. Open the app directly.
-                      </p>
-                    </div>
-                  )}
-                </div>
               ) : (
-                <div className="flex-1 flex flex-col items-center justify-center gap-4 border-2 border-gray-400/70 dark:border-white/30 rounded-lg p-6 text-center">
+                <div className="flex flex-col items-center justify-center gap-4 min-h-[40vh] border-2 border-gray-400/70 dark:border-white/30 rounded-lg p-6 text-center">
                   <PreviewIcon type={selectedPreview.type} />
                   <p className="text-gray-500 dark:text-gray-400">
                     This preview opens in a new tab.
@@ -376,7 +317,7 @@ const Projects = () => {
                 </div>
               )}
 
-              <div className="flex justify-between items-center gap-2 shrink-0">
+              <div className="flex justify-between gap-2 pt-2">
                 <button
                   type="button"
                   onClick={handleBack}
@@ -397,7 +338,7 @@ const Projects = () => {
                   Open in New Tab
                 </button>
               </div>
-            </div>
+            </>
           ) : (
             <>
               <DialogHeader>
@@ -405,7 +346,7 @@ const Projects = () => {
                   <FolderOpen className="w-5 h-5" /> All Projects
                 </DialogTitle>
               </DialogHeader>
-              <div className="grid gap-4 md:grid-cols-2 mt-4">
+              <div ref={scrollRef} className="grid gap-4 md:grid-cols-2 mt-4 overflow-y-auto max-h-[70vh] pr-1">
                 {projects.map((project, index) => (
                   <div
                     key={index}
