@@ -1,7 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, FolderOpen, Eye, Globe, PlayCircle, ArrowLeft } from "lucide-react";
-import { useState } from "react";
+import { ExternalLink, FolderOpen, Eye, Globe, PlayCircle, ArrowLeft, Loader2 } from "lucide-react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -144,7 +143,8 @@ const projects: Project[] = [
   },
 ];
 
-const isStreamlitUrl = (url: string) => url.includes("streamlit.app");
+const needsScreenshot = (preview: ProjectPreview) =>
+  preview.type === "external" || (preview.type === "website" && preview.url.includes("streamlit.app"));
 
 const getEmbedUrl = (preview: ProjectPreview): string | null => {
   const { url, type } = preview;
@@ -152,7 +152,7 @@ const getEmbedUrl = (preview: ProjectPreview): string | null => {
   if (type === "external") return null;
 
   if (type === "website") {
-    if (isStreamlitUrl(url)) return null;
+    if (url.includes("streamlit.app")) return null;
     return url;
   }
 
@@ -178,6 +178,9 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedPreview, setSelectedPreview] = useState<ProjectPreview | null>(null);
   const [returnToList, setReturnToList] = useState(false);
+  const [screenshotUrl, setScreenshotUrl] = useState<string | null>(null);
+  const [screenshotLoading, setScreenshotLoading] = useState(false);
+  const [screenshotError, setScreenshotError] = useState(false);
 
   const visibleProjects = projects.slice(0, 4);
 
@@ -210,8 +213,51 @@ const Projects = () => {
       setSelectedProject(null);
       setSelectedPreview(null);
       setReturnToList(false);
+      setScreenshotUrl(null);
+      setScreenshotError(false);
     }
   };
+
+  useEffect(() => {
+    if (!selectedPreview || !needsScreenshot(selectedPreview)) {
+      setScreenshotUrl(null);
+      setScreenshotError(false);
+      return;
+    }
+    setScreenshotUrl(null);
+    setScreenshotError(false);
+    setScreenshotLoading(true);
+
+    let cancelled = false;
+    const attempt = (retries: number) => {
+      fetch(`https://api.microlink.io/?url=${encodeURIComponent(selectedPreview.url)}&screenshot=true&meta=false&waitForTimeout=5000`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (cancelled) return;
+          const url = data?.data?.screenshot?.url;
+          if (url) {
+            setScreenshotUrl(url);
+            setScreenshotLoading(false);
+          } else if (retries > 0) {
+            setTimeout(() => attempt(retries - 1), 2000);
+          } else {
+            setScreenshotError(true);
+            setScreenshotLoading(false);
+          }
+        })
+        .catch(() => {
+          if (cancelled) return;
+          if (retries > 0) {
+            setTimeout(() => attempt(retries - 1), 2000);
+          } else {
+            setScreenshotError(true);
+            setScreenshotLoading(false);
+          }
+        });
+    };
+    attempt(4);
+    return () => { cancelled = true; };
+  }, [selectedPreview]);
 
   const embedUrl = selectedPreview ? getEmbedUrl(selectedPreview) : null;
 
@@ -287,42 +333,46 @@ const Projects = () => {
                     allowFullScreen
                   />
                 </div>
+              ) : needsScreenshot(selectedPreview) ? (
+                <div className="flex-1 min-h-0 rounded-lg border-2 border-gray-400/70 dark:border-white/30 relative overflow-hidden">
+                  {screenshotLoading && (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                      <Loader2 className="w-6 h-6 animate-spin text-gray-400" />
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Loading preview…</p>
+                    </div>
+                  )}
+                  {screenshotUrl && (
+                    <img
+                      src={screenshotUrl}
+                      alt={`${selectedProject.title} screenshot`}
+                      className="absolute inset-0 w-full h-full object-cover object-top"
+                    />
+                  )}
+                  {screenshotError && !screenshotLoading && (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center p-6">
+                      <Globe className="w-6 h-6 text-gray-400" />
+                      <p className="text-sm text-gray-500 dark:text-gray-400 max-w-sm">
+                        Screenshot unavailable. Open the app directly.
+                      </p>
+                    </div>
+                  )}
+                </div>
               ) : (
                 <div className="flex-1 flex flex-col items-center justify-center gap-4 border-2 border-gray-400/70 dark:border-white/30 rounded-lg p-6 text-center">
                   <PreviewIcon type={selectedPreview.type} />
-                  {isStreamlitUrl(selectedPreview.url) ? (
-                    <>
-                      <p className="text-gray-500 dark:text-gray-400 max-w-sm">
-                        Streamlit apps block embedded previews. Visit the live app directly in your browser.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          window.open(selectedPreview.url, "_blank", "noopener,noreferrer")
-                        }
-                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        Open in Streamlit
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-gray-500 dark:text-gray-400">
-                        This preview opens in a new tab.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          window.open(selectedPreview.url, "_blank", "noopener,noreferrer")
-                        }
-                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        Open {selectedPreview.title}
-                      </button>
-                    </>
-                  )}
+                  <p className="text-gray-500 dark:text-gray-400">
+                    This preview opens in a new tab.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      window.open(selectedPreview.url, "_blank", "noopener,noreferrer")
+                    }
+                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Open {selectedPreview.title}
+                  </button>
                 </div>
               )}
 
