@@ -27,6 +27,21 @@ interface Certification {
 const certifications: Certification[] = [
   // ── Cloud & Infrastructure ──────────────────────────────
   {
+    title: "AWS Certified Cloud Practitioner",
+    organization: "Amazon Web Services (AWS)",
+    program: "AWS Cloud Concepts · Security · Technology · Billing & Pricing",
+    pdfUrl: "/Certificates/AWS Certified Cloud Practitioner certificate.pdf",
+    credentialUrl: "https://www.credly.com/earner/earned/badge/3f0dae20-dd47-49e2-a759-616697af9066",
+  },
+  {
+    title: "Microsoft Certified: Azure Fundamentals",
+    organization: "Microsoft",
+    program: "Azure Services · Cloud Concepts · Governance & Security",
+    date: "October 18, 2026",
+    pdfUrl: "/Certificates/Microsoft Certified Azure Fundamentals.pdf",
+    credentialUrl: "https://learn.microsoft.com/api/credentials/share/en-us/NapoleonTorres-8484/26AA9170A52FD0E?sharingId=7E6B5C88088D4B5E",
+  },
+  {
     title: "Cloud Computing Fundamentals",
     organization: "IBM",
     program: "Cloud Architecture · Virtualization · Hybrid Cloud",
@@ -84,6 +99,13 @@ const certifications: Certification[] = [
     credentialUrl: "https://www.credly.com/badges/a0baa8b3-4ed9-4c60-9c5f-9ffe57c01229/public_url",
   },
   // ── AI & Emerging Tech ──────────────────────────────────
+  {
+    title: "Generative & Agentic AI Foundation",
+    organization: "IBM",
+    program: "Generative AI · Agentic AI · AI Foundations",
+    pdfUrl: "/Certificates/IBM Generative & Agentic AI Foundation.pdf",
+    credentialUrl: "https://www.credly.com/earner/earned/badge/0398ccab-fed5-4feb-b3e4-bff3990aaaf4",
+  },
   {
     title: "2026 IBMer watsonx Challenge",
     organization: "IBM",
