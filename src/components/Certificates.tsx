@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,8 +8,6 @@ import {
 } from "@/components/ui/dialog";
 import {
   Award,
-  ChevronLeft,
-  ChevronRight,
   Eye,
   ExternalLink,
   FileText,
@@ -187,28 +185,23 @@ const certifications: Certification[] = [
 const actionButtonClass =
   "inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-400/70 dark:border-white/30 bg-transparent text-black dark:text-white hover:bg-black/[0.07] dark:hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all duration-200";
 
+// Shortest signed distance from the active card, so the carousel wraps around
+const circularOffset = (index: number, active: number, total: number) => {
+  let d = (((index - active) % total) + total) % total;
+  if (d > total / 2) d -= total;
+  return d;
+};
+
 const Certifications = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [direction, setDirection] = useState<"next" | "prev">("next");
+  const dragRef = useRef<{ startX: number } | null>(null);
+  const didDragRef = useRef(false);
 
   const visibleCertifications = certifications.slice(0, 4);
   const activeCert = activeIndex !== null ? certifications[activeIndex] : null;
 
-  // Preload neighbouring slides so navigation feels instant
-  useEffect(() => {
-    if (activeIndex === null) return;
-    const total = certifications.length;
-    [activeIndex - 1, activeIndex + 1].forEach((i) => {
-      const src = certifications[(i + total) % total].imageUrl;
-      if (src) new Image().src = src;
-    });
-  }, [activeIndex]);
-
   const goTo = (index: number) => {
     const total = certifications.length;
-    if (activeIndex !== null) {
-      setDirection(index > activeIndex ? "next" : "prev");
-    }
     setActiveIndex(((index % total) + total) % total);
   };
 
@@ -310,54 +303,69 @@ const Certifications = () => {
                 </div>
               </DialogHeader>
 
-              {/* Slide */}
-              <div className="relative flex-1 min-h-0">
-                <div
-                  key={activeIndex}
-                  className={`h-full overflow-hidden rounded-lg border-2 border-gray-400/70 dark:border-white/30 p-1 animate-in fade-in duration-300 ${
-                    direction === "next"
-                      ? "slide-in-from-right-12"
-                      : "slide-in-from-left-12"
-                  }`}
-                >
-                  {activeCert.imageUrl ? (
-                    <div className="flex items-center justify-center h-full rounded-md bg-gray-50 dark:bg-white/5">
-                      <img
-                        src={activeCert.imageUrl}
-                        alt={`${activeCert.title} certificate`}
-                        className="max-h-full max-w-full object-contain rounded-md"
-                      />
-                    </div>
-                  ) : activeCert.pdfUrl ? (
-                    <iframe
-                      key={activeCert.pdfUrl}
-                      src={activeCert.pdfUrl}
-                      title={`${activeCert.title} certificate`}
-                      className="w-full h-full rounded-md"
-                    />
-                  ) : (
-                    <div className="flex items-center justify-center h-full rounded-md">
-                      <p className="text-gray-500">Certificate preview unavailable.</p>
-                    </div>
-                  )}
-                </div>
+              {/* 3D rotating carousel — drag/swipe, or click a side card */}
+              <div
+                className="relative flex-1 min-h-0 overflow-hidden select-none cursor-grab active:cursor-grabbing touch-pan-y"
+                style={{ perspective: "1400px" }}
+                onPointerDown={(e) => {
+                  dragRef.current = { startX: e.clientX };
+                  didDragRef.current = false;
+                }}
+                onPointerMove={(e) => {
+                  const d = dragRef.current;
+                  if (d && Math.abs(e.clientX - d.startX) > 8) didDragRef.current = true;
+                }}
+                onPointerUp={(e) => {
+                  const d = dragRef.current;
+                  dragRef.current = null;
+                  if (!d) return;
+                  const dx = e.clientX - d.startX;
+                  if (Math.abs(dx) > 50) goTo(activeIndex + (dx < 0 ? 1 : -1));
+                }}
+                onPointerLeave={() => {
+                  dragRef.current = null;
+                }}
+              >
+                {certifications.map((cert, i) => {
+                  const offset = circularOffset(i, activeIndex, certifications.length);
+                  const abs = Math.abs(offset);
+                  if (abs > 3) return null;
+                  const sign = Math.sign(offset);
+                  const isActive = offset === 0;
 
-                <button
-                  type="button"
-                  onClick={() => goTo(activeIndex - 1)}
-                  aria-label="Previous certificate"
-                  className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full border border-gray-400/70 dark:border-white/30 bg-white/90 dark:bg-black/70 text-black dark:text-white hover:scale-110 transition-all duration-200"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => goTo(activeIndex + 1)}
-                  aria-label="Next certificate"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full border border-gray-400/70 dark:border-white/30 bg-white/90 dark:bg-black/70 text-black dark:text-white hover:scale-110 transition-all duration-200"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
+                  return (
+                    <div
+                      key={cert.title}
+                      onClick={() => {
+                        if (didDragRef.current || isActive) return;
+                        goTo(i);
+                      }}
+                      className={`absolute left-1/2 top-1/2 h-[82%] aspect-[4/3] max-w-[78%] rounded-lg border-2 border-gray-400/70 dark:border-white/30 bg-white dark:bg-neutral-900 p-1 transition-[transform,opacity,filter] duration-500 ease-out ${
+                        isActive ? "shadow-2xl" : "cursor-pointer"
+                      }`}
+                      style={{
+                        transform: `translate(-50%, -50%) translateX(${offset * 58}%) translateZ(${-abs * 160}px) rotateY(${-sign * Math.min(abs, 1) * 48}deg)`,
+                        opacity: abs > 2 ? 0 : 1,
+                        filter: isActive ? "none" : "brightness(0.55)",
+                        zIndex: 10 - abs,
+                        pointerEvents: abs > 2 ? "none" : "auto",
+                      }}
+                    >
+                      {cert.imageUrl ? (
+                        <img
+                          src={cert.imageUrl}
+                          alt={`${cert.title} certificate`}
+                          draggable={false}
+                          className="w-full h-full object-contain rounded-md"
+                        />
+                      ) : (
+                        <div className="flex items-center justify-center h-full rounded-md">
+                          <p className="text-gray-500">Certificate preview unavailable.</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Footer: dots + actions */}
